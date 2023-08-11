@@ -15,6 +15,8 @@ import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './componentes/home/home.component';
 import { MenuComponent } from './componentes/menu/menu.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { MenuComponent } from './componentes/menu/menu.component';
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
+    MatSidenavModule,
+    MatListModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
