@@ -1,0 +1,45 @@
+<div class="container">
+    <mat-toolbar>
+        <img src="../../../assets/img/logo.png" alt="unesp logo" class="logo">
+    </mat-toolbar>
+
+    <!-- Form de Login -->
+    <mat-card class="card_login mat-elevation-z4">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Autenticação UNESP</mat-card-title>
+            <mat-card-subtitle>Sistema de solicitação de veículos</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form class="form">
+                <mat-form-field class="full-width">
+                    <mat-icon matSuffix>person</mat-icon>
+                    <mat-label>email</mat-label>
+                    <input
+                        [formControl]="isEmailValid" 
+                        [(ngModel)]="cred.email"
+                        name="email"
+                        required
+                        matInput 
+                        placeholder="Ex. usario@unesp.br"
+                    >
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <mat-icon matSuffix>password</mat-icon>
+                    <mat-label>senha</mat-label>
+                    <input 
+                        [formControl]="isSenhaValid" 
+                        [(ngModel)]="cred.senha"
+                        name="senha"
+                        type="password" 
+                        matInput 
+                        placeholder="">
+                </mat-form-field>
+
+                <button (click)="login()" [disabled]="isFormInvalido()" class="btn_form" color="primary">Login</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

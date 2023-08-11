@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+}
+.card_login{
+    max-width: 50%;    
+    margin: auto; 
+    margin-top: 10rem;   
+    align-items: center;
+}
+.full-width{
+    width: 100%;
+}
+.btn_form{
+    width: 100%;
+    background-color: #4291ef;
+    color: white;
+    padding: 0.4rem;
+}
+.btn_form:disabled{
+    background-color: gray;
+}
+mat-toolbar {
+    /* width: 100%; */
+    background-color: #4291ef;    
+}
+img {
+ width: 10rem;
+}
+
