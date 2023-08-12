@@ -19,7 +19,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ToastrModule } from 'ngx-toastr';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
+import { FuncionarioListComponent } from './componentes/funcionarios/funcionario-list/funcionario-list.component';
+import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component'
     AuthComponent,
     HomeComponent,
     MenuComponent,
-    CabecalhoComponent
+    CabecalhoComponent,
+    FuncionarioListComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,8 @@ import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component'
     ReactiveFormsModule,
     HttpClientModule,
     MatGridListModule,
+    MatPaginatorModule,
+    MatTableModule,
     ToastrModule.forRoot({
       timeOut:4000,
       closeButton:true,
@@ -51,7 +58,7 @@ import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component'
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

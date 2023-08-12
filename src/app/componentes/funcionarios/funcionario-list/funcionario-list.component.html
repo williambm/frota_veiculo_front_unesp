@@ -1,0 +1,20 @@
+<div class="container">
+  <mat-table [dataSource]="funcionarios" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let funcionario"> {{ funcionario.id }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let funcionario"> {{ funcionario.nome }} </mat-cell>
+    </ng-container>
+
+    <!-- Defina mais colunas para os outros atributos -->
+
+    <mat-header-row *matHeaderRowDef="['id', 'nome']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['id', 'nome']"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons ></mat-paginator>
+</div>
