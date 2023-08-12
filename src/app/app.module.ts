@@ -21,6 +21,9 @@ import { ToastrModule } from 'ngx-toastr';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
 import { FuncionarioListComponent } from './componentes/funcionarios/funcionario-list/funcionario-list.component';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
@@ -52,6 +55,9 @@ import { FuncionarioCreateComponent } from './componentes/funcionarios/funcionar
     MatGridListModule,
     MatPaginatorModule,
     MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
     ToastrModule.forRoot({
       timeOut:4000,
       closeButton:true,
@@ -60,7 +66,10 @@ import { FuncionarioCreateComponent } from './componentes/funcionarios/funcionar
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [
+    AuthInterceptorProvider,
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
