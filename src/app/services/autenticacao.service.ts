@@ -4,6 +4,7 @@ import { Credenciais } from '../model/credenciais';
 import { API_CONFIG } from '../config/endpoints';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UsuarioSession } from '../model/usuarioSession';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,9 @@ export class AutenticacaoService {
   };
 
   constructor(
-    private http: HttpClient) {}
+    private http: HttpClient,
+    private toast: ToastrService
+    ) {}
 
   autenticar(dadoslogin: Credenciais) {
     return this.http.post(`${API_CONFIG.baseUrl}/auth/login`, dadoslogin, {
@@ -35,7 +38,8 @@ export class AutenticacaoService {
       this.persistDadosUsuario(token)
 
     } else {
-      //todo: Notifica erro de token
+      this.toast.error('Problema com o token de autenticação','Erro - Autenticação');
+
     }
   }
 
@@ -58,6 +62,14 @@ export class AutenticacaoService {
     } else {
       return false;
     }
+  }
+
+  getPerfilUsuario():string{
+    if(this.isAutenticado()){
+      return `${sessionStorage.getItem('perfil')}`
+    }
+    this.toast.error('Não é possível identificar o perfil de usuário, contate a equipe de sistemas','Erro de Perfil de usuário')
+    return "erro:sem_perfil"
   }
 
   logout(){

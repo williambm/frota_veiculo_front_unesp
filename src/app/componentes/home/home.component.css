@@ -1,0 +1,22 @@
+.container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.estatisticas-container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.card_descricao {
+  margin-bottom: 1rem;
+}
+
+.card_estatistica {
+  flex: 1;
+}

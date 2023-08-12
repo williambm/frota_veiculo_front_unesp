@@ -20,6 +20,10 @@ export class MenuComponent {
     this.router.navigate(['/home'])
   }
 
+  validaRenderizacao():string{
+    return this.authService.getPerfilUsuario()
+  }
+
   logout(){
     this.authService.logout()
     this.toast.info("logout realizado com sucesso","logout",{timeOut:2000})

@@ -1,39 +1,40 @@
 <mat-drawer-container class="container" autosize>
   <app-cabecalho></app-cabecalho>
-    <mat-drawer #drawer class="sidenav" mode="side">
-        <img src="../../../assets/img/logo.png" alt="logo unesp">
-        <mat-nav-list class="nav-list">
-            <a mat-list-item routerLink="/home">
-                <i class="material-icons">home</i>
-                <span>Home</span>
-            </a>
-            <a mat-list-item routerLink="/tecnicos">
-                <i class="material-icons">badge</i>
-                <span>Funcionários</span>
-            </a>
-            <a mat-list-item routerLink="/">
-                <i class="material-icons">map</i>
-                <span>Viagens</span>
-            </a>
-            <a mat-list-item routerLink="/">
-                <i class="material-icons">directions_car</i>
-                <span>Veículos</span>
-            </a>
-            <a mat-list-item (click)="logout()">
-                <i class="material-icons">logout</i>
-                <span>Logout</span>
-            </a>
-        </mat-nav-list>
-    </mat-drawer>
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <img src="../../../assets/img/logo.png" alt="logo unesp" />
+    <mat-nav-list class="nav-list">
+      <a mat-list-item routerLink="/home">
+        <i class="material-icons">home</i>
+        <span>Home</span>
+      </a>
+      <a
+        *ngIf="validaRenderizacao() == 'ADMIN'"
+        mat-list-item
+        routerLink="/tecnicos"
+      >
+        <i class="material-icons">badge</i>
+        <span>Funcionários</span>
+      </a>
+      <a mat-list-item routerLink="/">
+        <i class="material-icons">map</i>
+        <span>Viagens</span>
+      </a>
+      <a *ngIf="validaRenderizacao() == 'ADMIN'" mat-list-item routerLink="/">
+        <i class="material-icons">directions_car</i>
+        <span>Veículos</span>
+      </a>
+      <a mat-list-item (click)="logout()">
+        <i class="material-icons">logout</i>
+        <span>Logout</span>
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
 
-    <div class="sidenav-content">
-        <button class="menu mat-elevation-z8" mat-button (click)="drawer.toggle()" >
-            <mat-icon>menu</mat-icon>
-        </button>
-    </div>
+  <div class="sidenav-content">
+    <button class="menu mat-elevation-z8" mat-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
 
-
-    <router-outlet></router-outlet>
-
+  <router-outlet></router-outlet>
 </mat-drawer-container>
-
