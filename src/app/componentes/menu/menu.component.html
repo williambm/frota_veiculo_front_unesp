@@ -1,26 +1,27 @@
 <mat-drawer-container class="container" autosize>
+  <app-cabecalho></app-cabecalho>
     <mat-drawer #drawer class="sidenav" mode="side">
         <img src="../../../assets/img/logo.png" alt="logo unesp">
         <mat-nav-list class="nav-list">
             <a mat-list-item routerLink="/home">
                 <i class="material-icons">home</i>
-                Home
+                <span>Home</span>
             </a>
             <a mat-list-item routerLink="/tecnicos">
                 <i class="material-icons">badge</i>
-                Funcionários
+                <span>Funcionários</span>
             </a>
             <a mat-list-item routerLink="/">
                 <i class="material-icons">map</i>
-                Viagens
+                <span>Viagens</span>
             </a>
             <a mat-list-item routerLink="/">
                 <i class="material-icons">directions_car</i>
-                Veículos
+                <span>Veículos</span>
             </a>
             <a mat-list-item >
                 <i class="material-icons">logout</i>
-                Logout
+                <span>Logout</span>
             </a>
         </mat-nav-list>
     </mat-drawer>
@@ -31,8 +32,8 @@
         </button>
     </div>
 
-   
+
     <router-outlet></router-outlet>
-    
+
 </mat-drawer-container>
 

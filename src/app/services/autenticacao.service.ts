@@ -3,16 +3,16 @@ import { Injectable } from '@angular/core';
 import { Credenciais } from '../model/credenciais';
 import { API_CONFIG } from '../config/endpoints';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { UsuarioLocalStorage } from '../model/usuarioLocalStorage';
+import { UsuarioSession } from '../model/usuarioSession';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AutenticacaoService {
   jwtService = new JwtHelperService();
-  
+
   //Inicialização do model de usuario
-  private usuario: UsuarioLocalStorage={
+  private usuario: UsuarioSession={
     nome:'',
     email:'',
     perfil:''
@@ -21,7 +21,7 @@ export class AutenticacaoService {
   constructor(
     private http: HttpClient) {}
 
-  autenticar(dadoslogin: Credenciais) {    
+  autenticar(dadoslogin: Credenciais) {
     return this.http.post(`${API_CONFIG.baseUrl}/auth/login`, dadoslogin, {
       observe: 'response',
       responseType: 'text',
@@ -30,7 +30,7 @@ export class AutenticacaoService {
 
   loginSucesso(token: string) {
     if (token.length > 0 && token != null) {
-      localStorage.setItem('token', token);     
+      localStorage.setItem('token', token);
 
       this.persistDadosUsuario(token)
 
@@ -53,8 +53,8 @@ export class AutenticacaoService {
   }
 
   isAutenticado(): boolean {
-    let token = localStorage.getItem('token');   
-    
+    let token = localStorage.getItem('token');
+
     if (token != null) {
       return !this.jwtService.isTokenExpired(token);
     } else {

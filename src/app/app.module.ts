@@ -17,13 +17,15 @@ import { HomeComponent } from './componentes/home/home.component';
 import { MenuComponent } from './componentes/menu/menu.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     HomeComponent,
-    MenuComponent
+    MenuComponent,
+    CabecalhoComponent
   ],
   imports: [
     BrowserModule,

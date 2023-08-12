@@ -1,0 +1,14 @@
+mat-toolbar {
+  /* width: 100%; */
+  background-color: #4291ef;
+}
+img {
+width: 10rem;
+}
+.saudacao {
+  color: white;
+  margin-left: auto;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  font-size: medium;
+}
