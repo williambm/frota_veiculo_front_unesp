@@ -40,8 +40,6 @@ export class AutenticacaoService {
   }
 
   persistDadosUsuario(token:string):void{
-    //todo: vou trabalhar com o LocalStorage para colocar alguns dados do usuário no armazenamento e asim renderizar a tela de acordo com o perfil
-    //Descobrir depois se é a melhor estratégia
     let descodeToken = this.jwtService.decodeToken(`${token}`)
     sessionStorage.setItem('nome',descodeToken.nome)
     sessionStorage.setItem('email',descodeToken.email)
@@ -64,5 +62,8 @@ export class AutenticacaoService {
 
   logout(){
     localStorage.removeItem('token')
+    sessionStorage.removeItem('nome')
+    sessionStorage.removeItem('email')
+    sessionStorage.removeItem('perfil')
   }
 }

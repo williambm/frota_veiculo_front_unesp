@@ -1,17 +1,17 @@
+
 .container {
     height: 100%;
 }
 
 .sidenav {
     width: 10rem;
-    /* background: linear-gradient(180deg, rgba(238,174,202,1) 0%, rgba(158,158,144,1) 0%, rgba(158,158,144,1) 100%); */
-    /* background-image: linear-gradient(to bottom, #000505, #010d0d, #011313, #021818, #021c1c); */
+
     background-image: linear-gradient(to bottom, #000505, #161919, #252929, #353939, #464a4a);
 }
-i{
+.nav-list i{
   color: white;
 }
-span{
+.nav-list span{
   color: white;
 }
 img {
@@ -24,3 +24,4 @@ img {
 .menu{
     color: white;
 }
+

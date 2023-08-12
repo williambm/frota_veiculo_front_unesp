@@ -17,6 +17,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { MenuComponent } from './componentes/menu/menu.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { ToastrModule } from 'ngx-toastr';
 import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
 
 @NgModule({
@@ -40,6 +41,11 @@ import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component'
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut:4000,
+      closeButton:true,
+      progressBar:true
+    }),
     BrowserAnimationsModule,
     AppRoutingModule
   ],
