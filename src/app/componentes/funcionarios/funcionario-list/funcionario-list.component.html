@@ -1,8 +1,9 @@
 <div class="container">
+  <button routerLink="create" class="cadastrar_btn" mat-raised-button color="primary">Cadastrar Funcionário</button>
   <mat-table [dataSource]="funcionarios" class="mat-elevation-z8">
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-      <mat-cell *matCellDef="let funcionario"> {{ funcionario.id }} </mat-cell>
+    <ng-container matColumnDef="matricula">
+      <mat-header-cell *matHeaderCellDef> Matrícula </mat-header-cell>
+      <mat-cell *matCellDef="let funcionario"> {{ funcionario.matricula }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="nome">
@@ -10,11 +11,44 @@
       <mat-cell *matCellDef="let funcionario"> {{ funcionario.nome }} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="funcao">
+      <mat-header-cell *matHeaderCellDef> Função </mat-header-cell>
+      <mat-cell *matCellDef="let funcionario"> {{ funcionario.funcao }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
+      <mat-cell *matCellDef="let funcionario"> {{ funcionario.email }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="perfil">
+      <mat-header-cell *matHeaderCellDef> Perfil </mat-header-cell>
+      <mat-cell *matCellDef="let funcionario"> {{ funcionario.perfil }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+      <mat-cell *matCellDef="let funcionario">
+        <a routerLink="edit/{{funcionario.matricula}}">
+          <mat-icon class="edit" aria-hidden="false" aria-label="Icone de edição" fontIcon="edit"></mat-icon>
+        </a>
+        <a routerLink="delete/{{funcionario.matricula}}">
+          <mat-icon class="delete" aria-hidden="false" aria-label="Icone de edição" fontIcon="delete"></mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
     <!-- Defina mais colunas para os outros atributos -->
 
-    <mat-header-row *matHeaderRowDef="['id', 'nome']"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: ['id', 'nome']"></mat-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons ></mat-paginator>
+  <mat-paginator
+  [length]="totalElementos"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 25, 50]"
+  (page)="onPageChange($event)"
+  showFirstLastButtons
+></mat-paginator>
 </div>

@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Funcionario } from 'src/app/model/funcionario';
 import { FuncionariosService } from 'src/app/services/funcionarios.service';
 
 @Component({
@@ -10,7 +11,11 @@ import { FuncionariosService } from 'src/app/services/funcionarios.service';
 export class FuncionarioListComponent {
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
-  funcionarios: any[] = [];
+  funcionarios: Funcionario[][] = [];
+  displayedColumns: string[]=['matricula','nome','funcao','email','perfil','acoes']
+  pageIndex: number = 0; // Página atual
+  pageSize: number = 5; // Tamanho da página
+  totalElementos: number = 0; // Total de elementos da lista
 
   constructor(private funcionarioService: FuncionariosService) {}
 
@@ -18,11 +23,23 @@ export class FuncionarioListComponent {
     this.carregarFuncionarios()
   }
 
+  //Faço uma primeira carga para descobrir o total de elementos
   carregarFuncionarios(): void {
     this.funcionarioService.findAllPaginado(0, 5).subscribe((resposta) => {
       this.funcionarios = resposta.content;
+      this.totalElementos = resposta.totalElements; // Atualiza o total de funcionários
+    });
+  }
 
-      console.log(this.funcionarios)
+  onPageChange(event: PageEvent): void {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.carregarFuncionariosPaginados(this.pageIndex,this.pageSize);
+  }
+
+  carregarFuncionariosPaginados(pageIndex: number, pageSize: number) {
+    this.funcionarioService.findAllPaginado(this.pageIndex, this.pageSize).subscribe((resposta) => {
+      this.funcionarios = resposta.content;
     });
   }
 }

@@ -1,4 +1,9 @@
 .container{
   width: 90%;
   margin: auto;
+  margin-top: 1rem;
+}
+.cadastrar_btn{
+  background-color:#4290ef ;
+  margin-bottom: 0.5rem;
 }

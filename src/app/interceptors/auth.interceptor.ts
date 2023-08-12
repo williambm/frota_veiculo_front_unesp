@@ -16,11 +16,12 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     let token = localStorage.getItem('token');
 
-    if (token) {
+    //verifica se o token existe e se na URL não é a de login /auth nela não teremos um token válido ainda
+    if (token && !request.url.includes('/auth')) {
       const cloneReq = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`),
       });
-      console.log('Headers with Token:', cloneReq.headers);
+
       return next.handle(cloneReq);
     } else {
       return next.handle(request);

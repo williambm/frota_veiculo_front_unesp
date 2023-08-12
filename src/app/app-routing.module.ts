@@ -5,6 +5,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { MenuComponent } from './componentes/menu/menu.component';
 import { AuthGuard } from './auth/guard.guard';
 import { FuncionarioListComponent } from './componentes/funcionarios/funcionario-list/funcionario-list.component';
+import { FuncionarioCreateComponent } from './componentes/funcionarios/funcionario-create/funcionario-create.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
     canActivate:[AuthGuard],
     children:[
       { path: 'home', component: HomeComponent },
-      { path: 'funcionarios', component: FuncionarioListComponent }
+      { path: 'funcionarios', component: FuncionarioListComponent },
+      { path: 'funcionarios/create', component: FuncionarioCreateComponent }
     ]
    }
 ];

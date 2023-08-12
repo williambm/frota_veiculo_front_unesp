@@ -13,16 +13,13 @@ export class AutenticacaoService {
   jwtService = new JwtHelperService();
 
   //Inicialização do model de usuario
-  private usuario: UsuarioSession={
-    nome:'',
-    email:'',
-    perfil:''
+  private usuario: UsuarioSession = {
+    nome: '',
+    email: '',
+    perfil: '',
   };
 
-  constructor(
-    private http: HttpClient,
-    private toast: ToastrService
-    ) {}
+  constructor(private http: HttpClient, private toast: ToastrService) {}
 
   autenticar(dadoslogin: Credenciais) {
     return this.http.post(`${API_CONFIG.baseUrl}/auth/login`, dadoslogin, {
@@ -35,23 +32,20 @@ export class AutenticacaoService {
     if (token.length > 0 && token != null) {
       localStorage.setItem('token', token);
 
-      this.persistDadosUsuario(token)
-
+      this.persistDadosUsuario(token);
     } else {
-      this.toast.error('Problema com o token de autenticação','Erro - Autenticação');
-
+      this.toast.error(
+        'Problema com o token de autenticação',
+        'Erro - Autenticação'
+      );
     }
   }
 
-  persistDadosUsuario(token:string):void{
-    let descodeToken = this.jwtService.decodeToken(`${token}`)
-    sessionStorage.setItem('nome',descodeToken.nome)
-    sessionStorage.setItem('email',descodeToken.email)
-    sessionStorage.setItem('perfil',descodeToken.roles)
-
-    //TODO: rEMOVER DEPOIS ESSE DEBUG
-    console.log(this.usuario);
-
+  persistDadosUsuario(token: string): void {
+    let descodeToken = this.jwtService.decodeToken(`${token}`);
+    sessionStorage.setItem('nome', descodeToken.nome);
+    sessionStorage.setItem('email', descodeToken.email);
+    sessionStorage.setItem('perfil', descodeToken.roles);
   }
 
   isAutenticado(): boolean {
@@ -64,18 +58,14 @@ export class AutenticacaoService {
     }
   }
 
-  getPerfilUsuario():string{
-    if(this.isAutenticado()){
-      return `${sessionStorage.getItem('perfil')}`
-    }
-    this.toast.error('Não é possível identificar o perfil de usuário, contate a equipe de sistemas','Erro de Perfil de usuário')
-    return "erro:sem_perfil"
+  getPerfilUsuario(): string {
+    return `${sessionStorage.getItem('perfil')}`;
   }
 
-  logout(){
-    localStorage.removeItem('token')
-    sessionStorage.removeItem('nome')
-    sessionStorage.removeItem('email')
-    sessionStorage.removeItem('perfil')
+  logout() {
+    localStorage.removeItem('token');
+    sessionStorage.removeItem('nome');
+    sessionStorage.removeItem('email');
+    sessionStorage.removeItem('perfil');
   }
 }
