@@ -17,4 +17,8 @@ export class FuncionariosService {
   findAllPaginado(page: number, size: number):Observable<Paginacao<Funcionario[]>>{
     return this.http.get<Paginacao<Funcionario[]>>(`${API_CONFIG.baseUrl}/funcionarios?page=${page}&size=${size}`)
   }
+
+  create(funcionario:Funcionario):Observable<Funcionario>{
+    return this.http.post<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios`,funcionario);
+  }
 }

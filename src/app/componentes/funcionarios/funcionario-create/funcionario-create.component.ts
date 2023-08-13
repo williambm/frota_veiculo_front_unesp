@@ -1,7 +1,10 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Funcionario } from 'src/app/model/funcionario';
+import { FuncionariosService } from 'src/app/services/funcionarios.service';
 
 @Component({
   selector: 'app-funcionario-create',
@@ -11,7 +14,10 @@ import { Funcionario } from 'src/app/model/funcionario';
 export class FuncionarioCreateComponent {
 
   constructor(
-    private datePipe: DatePipe //Pipe de datas do angular para ajustar datas
+    private datePipe: DatePipe, //Pipe de datas do angular para ajustar datas
+    private toast: ToastrService,
+    private funcionarioService:FuncionariosService,
+    private route: Router
   ){}
 
   funcionario: Funcionario = {
@@ -45,12 +51,29 @@ export class FuncionarioCreateComponent {
   }
 
   criar(){
-    const formattedDataAdmissao = this.datePipe.transform(this.funcionario.dataAdmissao, 'dd/MM/yyyy');
-    const formattedDataNascimento = this.datePipe.transform(this.funcionario.dataNascimento, 'dd/MM/yyyy');
+    const formattedDataAdmissao = this.datePipe.transform(this.funcionario.dataAdmissao, 'yyyy-MM-dd');
+    const formattedDataNascimento = this.datePipe.transform(this.funcionario.dataNascimento, 'yyyy-MM-dd');
 
-    console.log(this.funcionario)
-    console.log(this.funcionario.dataAdmissao)
-    console.log(formattedDataAdmissao)
-    console.log(formattedDataNascimento)
+    //Ajuste dos atributos de funcionário
+    this.funcionario.dataAdmissao = `${formattedDataAdmissao}`;
+    this.funcionario.dataNascimento = `${formattedDataNascimento}`;
+
+    //Comunicação com o service da API
+    this.funcionarioService.create(this.funcionario).subscribe(
+      resposta=>{
+        this.toast.info('Funcionário cadastrado com sucesso', 'SUCESSO'),
+        this.route.navigate(['/funcionarios'])
+      },
+      responseError => {
+        if (responseError.error.errors) {
+          responseError.error.errors.forEach((element: { message: string | undefined; fieldName: string | undefined; }) => {
+            this.toast.error(element.message, element.fieldName)
+          });
+        } else {
+          this.toast.error(`${responseError.error.message}`, `${responseError.error.error}`)
+        }
+      }
+    )
+
   }
 }
