@@ -28,6 +28,7 @@ import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component'
 import { FuncionarioListComponent } from './componentes/funcionarios/funcionario-list/funcionario-list.component';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { FuncionarioCreateComponent } from './componentes/funcionarios/funcionario-create/funcionario-create.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { FuncionarioCreateComponent } from './componentes/funcionarios/funcionar
   ],
   providers: [
     AuthInterceptorProvider,
-    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
