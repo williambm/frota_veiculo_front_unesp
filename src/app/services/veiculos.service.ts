@@ -21,4 +21,8 @@ export class VeiculosService {
     );
   }
 
+  create(veiculo:Veiculo): Observable<Veiculo>{
+    return this.http.post<Veiculo>(`${API_CONFIG.baseUrl}/veiculos`,veiculo);
+  }
+
 }

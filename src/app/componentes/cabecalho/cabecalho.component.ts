@@ -32,9 +32,9 @@ export class CabecalhoComponent {
   saudar(){
     const horaAtual = new Date().getHours();
 
-    if (horaAtual >= 0 && horaAtual <= 12) {
+    if (horaAtual >= 0 && horaAtual <= 11) {
       this.saudacao = 'Bom dia';
-    } else if (horaAtual > 12 && horaAtual <= 18) {
+    } else if (horaAtual > 11 && horaAtual <= 18) {
       this.saudacao = 'Boa tarde';
     } else {
       this.saudacao = 'Boa noite';

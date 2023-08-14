@@ -43,7 +43,7 @@ export class VeiculoListComponent {
   onPageChange(event: PageEvent): void {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
-    //this.carregarFuncionariosPaginados(this.pageIndex,this.pageSize);
+    this.carregarVeiculosPaginados(this.pageIndex,this.pageSize);
   }
 
   carregarVeiculosPaginados(pageIndex: number, pageSize: number) {

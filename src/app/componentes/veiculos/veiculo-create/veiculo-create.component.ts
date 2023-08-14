@@ -48,6 +48,20 @@ export class VeiculoCreateComponent {
   }
 
   criar(){
+    this.veiculoService.create(this.veiculo).subscribe(resposta=>{
+      this.toast.info(`O veículo ${resposta.fabricante} ${resposta.modelo} foi cadastrado com sucesso`,'SUCESSO')
+      this.route.navigate(['/veiculos'])
+    },
+    responseError => {
+      if (responseError.error.errors) {
+        responseError.error.errors.forEach((element: { message: string | undefined; fieldName: string | undefined; }) => {
+          this.toast.error(element.message, element.fieldName)
+        });
+      } else {
+        this.toast.error(`${responseError.error.message}`, `${responseError.error.error}`)
+      }
+    }
+    )
     console.log(this.veiculo)
   }
 }
