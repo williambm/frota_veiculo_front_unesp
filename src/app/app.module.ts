@@ -29,6 +29,7 @@ import { FuncionarioListComponent } from './componentes/funcionarios/funcionario
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { FuncionarioCreateComponent } from './componentes/funcionarios/funcionario-create/funcionario-create.component';
 import { DatePipe } from '@angular/common';
+import { FuncionarioEditComponent } from './componentes/funcionarios/funcionario-edit/funcionario-edit.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DatePipe } from '@angular/common';
     MenuComponent,
     CabecalhoComponent,
     FuncionarioListComponent,
-    FuncionarioCreateComponent
+    FuncionarioCreateComponent,
+    FuncionarioEditComponent
   ],
   imports: [
     BrowserModule,

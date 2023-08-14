@@ -21,7 +21,7 @@ export class FuncionarioCreateComponent {
   ){}
 
   funcionario: Funcionario = {
-    matricula: 0,
+    matricula: '',
     nome: '',
     senha: '',
     email: '',

@@ -6,13 +6,11 @@ import { MenuComponent } from './componentes/menu/menu.component';
 import { AuthGuard } from './auth/guard.guard';
 import { FuncionarioListComponent } from './componentes/funcionarios/funcionario-list/funcionario-list.component';
 import { FuncionarioCreateComponent } from './componentes/funcionarios/funcionario-create/funcionario-create.component';
+import { FuncionarioEditComponent } from './componentes/funcionarios/funcionario-edit/funcionario-edit.component';
 
 
 const routes: Routes = [
   { path: 'auth', component: AuthComponent },
-  //{ path: '', component: MenuComponent },
-  //{ path: 'home', component: HomeComponent },
-  //{ path: 'home', component: HomeComponent }
   {
     path: '',
     component: MenuComponent,
@@ -20,7 +18,8 @@ const routes: Routes = [
     children:[
       { path: 'home', component: HomeComponent },
       { path: 'funcionarios', component: FuncionarioListComponent },
-      { path: 'funcionarios/create', component: FuncionarioCreateComponent }
+      { path: 'funcionarios/create', component: FuncionarioCreateComponent },
+      { path: 'funcionarios/edit/:matricula', component: FuncionarioEditComponent }
     ]
    }
 ];

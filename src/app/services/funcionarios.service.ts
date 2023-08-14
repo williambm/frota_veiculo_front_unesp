@@ -18,6 +18,11 @@ export class FuncionariosService {
     return this.http.get<Paginacao<Funcionario[]>>(`${API_CONFIG.baseUrl}/funcionarios?page=${page}&size=${size}`)
   }
 
+  findById(pathParamId:number):Observable<Funcionario>{
+    console.log(pathParamId)
+    return this.http.get<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/${pathParamId}`)
+  }
+
   create(funcionario:Funcionario):Observable<Funcionario>{
     return this.http.post<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios`,funcionario);
   }

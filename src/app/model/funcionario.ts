@@ -1,5 +1,5 @@
 export interface Funcionario{
-  matricula: number;
+  matricula?: any;
   nome: string;
   senha?: string;
   email: string;
