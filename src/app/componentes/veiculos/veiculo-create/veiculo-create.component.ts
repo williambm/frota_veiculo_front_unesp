@@ -20,10 +20,7 @@ export class VeiculoCreateComponent {
   veiculo: Veiculo = {
     placa: '',
     fabricante: '',
-    modelo: '',
-    // totalPassageiros: 0,
-    // quilometragem: 0,
-    // anoFabricacao: 0,
+    modelo: '',  
     possuiCacamba: false,
   };
 

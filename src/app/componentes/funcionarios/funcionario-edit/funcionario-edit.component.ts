@@ -46,11 +46,8 @@ export class FuncionarioEditComponent {
     );
   }
 
-  ngOnInit(): void {
-    //Captura o id através da rota - OBS a string do get() deve ser a mesma informada na rota que no nosso caso é:id
-    this.funcionario.matricula =
-      this.routerPath.snapshot.paramMap.get('matricula');
-    //Preenche o objeto de tenico chamando pelo ID no BackEnd
+  ngOnInit(): void {    
+    this.funcionario.matricula = this.routerPath.snapshot.paramMap.get('matricula');    
     this.findById();
   }
 

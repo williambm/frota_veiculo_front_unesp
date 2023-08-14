@@ -17,12 +17,22 @@ export class VeiculosService {
     size: number
   ): Observable<Paginacao<Veiculo[]>> {
     return this.http.get<Paginacao<Veiculo[]>>(
-      `${API_CONFIG.baseUrl}/veiculos?page=${page}&size=${size}`
+      `${API_CONFIG.baseUrl}/veiculos?page=${page}&size=${size}&sort=id`
+    );
+  }
+
+  findById(pathParamId: number): Observable<Veiculo> {    
+    return this.http.get<Veiculo>(
+      `${API_CONFIG.baseUrl}/veiculos/${pathParamId}`
     );
   }
 
   create(veiculo:Veiculo): Observable<Veiculo>{
     return this.http.post<Veiculo>(`${API_CONFIG.baseUrl}/veiculos`,veiculo);
+  }
+
+  update(veiculo:Veiculo): Observable<Veiculo>{
+    return this.http.put<Veiculo>(`${API_CONFIG.baseUrl}/veiculos/${veiculo.id}`,veiculo);
   }
 
 }

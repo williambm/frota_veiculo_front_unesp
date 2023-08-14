@@ -16,7 +16,7 @@ export class FuncionariosService {
     size: number
   ): Observable<Paginacao<Funcionario[]>> {
     return this.http.get<Paginacao<Funcionario[]>>(
-      `${API_CONFIG.baseUrl}/funcionarios?page=${page}&size=${size}`
+      `${API_CONFIG.baseUrl}/funcionarios?page=${page}&size=${size}&sort=matricula`
     );
   }
 
