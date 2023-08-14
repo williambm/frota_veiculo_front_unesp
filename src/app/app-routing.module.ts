@@ -11,6 +11,7 @@ import { FuncionarioDeleteComponent } from './componentes/funcionarios/funcionar
 import { VeiculoListComponent } from './componentes/veiculos/veiculo-list/veiculo-list.component';
 import { VeiculoCreateComponent } from './componentes/veiculos/veiculo-create/veiculo-create.component';
 import { VeiculoEditComponent } from './componentes/veiculos/veiculo-edit/veiculo-edit.component';
+import { VeiculoDeleteComponent } from './componentes/veiculos/veiculo-delete/veiculo-delete.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
       { path: 'funcionarios/delete/:matricula', component: FuncionarioDeleteComponent },
       { path: 'veiculos', component: VeiculoListComponent },
       { path: 'veiculos/create', component: VeiculoCreateComponent },
-      { path: 'veiculos/edit/:id', component: VeiculoEditComponent }
+      { path: 'veiculos/edit/:id', component: VeiculoEditComponent },
+      { path: 'veiculos/delete/:id', component: VeiculoDeleteComponent }
     ]
    }
 ];

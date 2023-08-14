@@ -35,4 +35,9 @@ export class VeiculosService {
     return this.http.put<Veiculo>(`${API_CONFIG.baseUrl}/veiculos/${veiculo.id}`,veiculo);
   }
 
+  delete(veiculo:Veiculo): Observable<Veiculo> {
+    return this.http.delete<Veiculo>(
+      `${API_CONFIG.baseUrl}/veiculos/${veiculo.id}`);
+  }
+
 }

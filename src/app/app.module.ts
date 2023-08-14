@@ -34,6 +34,7 @@ import { FuncionarioDeleteComponent } from './componentes/funcionarios/funcionar
 import { VeiculoListComponent } from './componentes/veiculos/veiculo-list/veiculo-list.component';
 import { VeiculoCreateComponent } from './componentes/veiculos/veiculo-create/veiculo-create.component';
 import { VeiculoEditComponent } from './componentes/veiculos/veiculo-edit/veiculo-edit.component';
+import { VeiculoDeleteComponent } from './componentes/veiculos/veiculo-delete/veiculo-delete.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { VeiculoEditComponent } from './componentes/veiculos/veiculo-edit/veicul
     FuncionarioDeleteComponent,
     VeiculoListComponent,
     VeiculoCreateComponent,
-    VeiculoEditComponent
+    VeiculoEditComponent,
+    VeiculoDeleteComponent
   ],
   imports: [
     BrowserModule,
