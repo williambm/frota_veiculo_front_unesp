@@ -38,4 +38,9 @@ export class FuncionariosService {
       `${API_CONFIG.baseUrl}/funcionarios/${funcionario.matricula}`, funcionario
     );
   }
+
+  delete(funcionario: Funcionario): Observable<Funcionario> {
+    return this.http.delete<Funcionario>(
+      `${API_CONFIG.baseUrl}/funcionarios/${funcionario.matricula}`);
+  }
 }

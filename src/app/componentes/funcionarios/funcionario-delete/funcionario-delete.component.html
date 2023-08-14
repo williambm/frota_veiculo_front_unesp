@@ -22,6 +22,8 @@
         <mat-label>Perfil</mat-label>
           <mat-select
           [(ngModel)]="funcionario.perfil"
+          [disabled]="true"
+          name="perfil"
           >
             <mat-option [value]="'PASSAGEIRO'">Passageiro</mat-option>
             <mat-option [value]="'MOTORISTA'">Motorista</mat-option>
@@ -37,7 +39,7 @@
         <input
           [(ngModel)]="funcionario.nome"
           name="nome"          
-          required
+          [disabled]="true"
           matInput
           placeholder="Ex.. fulano de tal"
           maxlength="50"
@@ -51,7 +53,7 @@
           [(ngModel)]="funcionario.email"
           name="email"
           type="email"          
-          required
+          [disabled]="true"
           matInput
           placeholder="Ex.. nome@dominio.com.br"
           maxlength="50"
@@ -63,7 +65,8 @@
         <mat-label>Data de Admissão</mat-label>
         <input
           [(ngModel)]="funcionario.dataAdmissao"          
-          required
+          [disabled]="true"
+          name="dataAdmissao"
           matInput
           [matDatepicker]="admissaoPicker" />
         <mat-hint>DD/MM/YYYY</mat-hint>
@@ -78,7 +81,8 @@
         <mat-label>Data de Nascimento</mat-label>
         <input
           [(ngModel)]="funcionario.dataNascimento"          
-          required
+          [disabled]="true"
+          name="dataNascimento"
           matInput
           [matDatepicker]="nascimentoPicker" />
         <mat-hint>DD/MM/YYYY</mat-hint>
@@ -93,8 +97,8 @@
         <mat-label>Função</mat-label>
         <input
           [(ngModel)]="funcionario.funcao"          
-          name="funcao"
-          required
+          name="funcao"          
+          [disabled]="true"
           matInput
           placeholder="Ex.. assistente administrativo"
         />
@@ -106,7 +110,7 @@
         <input
           [(ngModel)]="funcionario.senha"          
           name="senha"
-          required
+          [disabled]="true"
           type="password"
           matInput
           placeholder="Ex.. 1234"
