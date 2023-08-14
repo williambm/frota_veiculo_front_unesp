@@ -7,6 +7,7 @@ import { AuthGuard } from './auth/guard.guard';
 import { FuncionarioListComponent } from './componentes/funcionarios/funcionario-list/funcionario-list.component';
 import { FuncionarioCreateComponent } from './componentes/funcionarios/funcionario-create/funcionario-create.component';
 import { FuncionarioEditComponent } from './componentes/funcionarios/funcionario-edit/funcionario-edit.component';
+import { FuncionarioDeleteComponent } from './componentes/funcionarios/funcionario-delete/funcionario-delete.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'funcionarios', component: FuncionarioListComponent },
       { path: 'funcionarios/create', component: FuncionarioCreateComponent },
-      { path: 'funcionarios/edit/:matricula', component: FuncionarioEditComponent }
+      { path: 'funcionarios/edit/:matricula', component: FuncionarioEditComponent },
+      { path: 'funcionarios/delete/:matricula', component: FuncionarioDeleteComponent }
     ]
    }
 ];
