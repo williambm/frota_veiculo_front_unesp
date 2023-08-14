@@ -1,0 +1,18 @@
+.container {
+  width: 90%;
+  margin: auto;
+  margin-top: 1rem;
+}
+.cadastrar_btn {
+  background-color: #4290ef;
+  margin-bottom: 0.5rem;
+}
+.delete {
+  color: red;
+}
+.com_cacamba{
+    color: green;
+}
+.sem_cacamba{
+    color: grey;
+}

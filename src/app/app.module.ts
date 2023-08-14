@@ -31,6 +31,8 @@ import { FuncionarioCreateComponent } from './componentes/funcionarios/funcionar
 import { DatePipe } from '@angular/common';
 import { FuncionarioEditComponent } from './componentes/funcionarios/funcionario-edit/funcionario-edit.component';
 import { FuncionarioDeleteComponent } from './componentes/funcionarios/funcionario-delete/funcionario-delete.component';
+import { VeiculoListComponent } from './componentes/veiculos/veiculo-list/veiculo-list.component';
+import { VeiculoCreateComponent } from './componentes/veiculos/veiculo-create/veiculo-create.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { FuncionarioDeleteComponent } from './componentes/funcionarios/funcionar
     FuncionarioListComponent,
     FuncionarioCreateComponent,
     FuncionarioEditComponent,
-    FuncionarioDeleteComponent
+    FuncionarioDeleteComponent,
+    VeiculoListComponent,
+    VeiculoCreateComponent
   ],
   imports: [
     BrowserModule,

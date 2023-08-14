@@ -8,6 +8,8 @@ import { FuncionarioListComponent } from './componentes/funcionarios/funcionario
 import { FuncionarioCreateComponent } from './componentes/funcionarios/funcionario-create/funcionario-create.component';
 import { FuncionarioEditComponent } from './componentes/funcionarios/funcionario-edit/funcionario-edit.component';
 import { FuncionarioDeleteComponent } from './componentes/funcionarios/funcionario-delete/funcionario-delete.component';
+import { VeiculoListComponent } from './componentes/veiculos/veiculo-list/veiculo-list.component';
+import { VeiculoCreateComponent } from './componentes/veiculos/veiculo-create/veiculo-create.component';
 
 
 const routes: Routes = [
@@ -21,7 +23,9 @@ const routes: Routes = [
       { path: 'funcionarios', component: FuncionarioListComponent },
       { path: 'funcionarios/create', component: FuncionarioCreateComponent },
       { path: 'funcionarios/edit/:matricula', component: FuncionarioEditComponent },
-      { path: 'funcionarios/delete/:matricula', component: FuncionarioDeleteComponent }
+      { path: 'funcionarios/delete/:matricula', component: FuncionarioDeleteComponent },
+      { path: 'veiculos', component: VeiculoListComponent },
+      { path: 'veiculos/create', component: VeiculoCreateComponent }
     ]
    }
 ];

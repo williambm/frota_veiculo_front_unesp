@@ -1,0 +1,73 @@
+<div class="container">
+    <button routerLink="create" class="cadastrar_btn" mat-raised-button color="primary">Cadastrar Veículo</button>
+    <mat-table [dataSource]="veiculos" class="mat-elevation-z8">
+      <ng-container matColumnDef="Id">
+        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+        <mat-cell *matCellDef="let veiculos"> {{ veiculos.id }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Placa">
+        <mat-header-cell *matHeaderCellDef> Placa </mat-header-cell>
+        <mat-cell *matCellDef="let veiculos"> {{ veiculos.placa }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Fabricante">
+        <mat-header-cell *matHeaderCellDef> Fabricante </mat-header-cell>
+        <mat-cell *matCellDef="let veiculos"> {{ veiculos.fabricante }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Modelo">
+        <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
+        <mat-cell *matCellDef="let veiculos"> {{ veiculos.modelo }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Qtd Passageiros">
+        <mat-header-cell *matHeaderCellDef> Qtd Passageiros </mat-header-cell>
+        <mat-cell *matCellDef="let veiculos"> {{ veiculos.totalPassageiros }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Km">
+        <mat-header-cell *matHeaderCellDef> Km </mat-header-cell>
+        <mat-cell *matCellDef="let veiculos"> {{ veiculos.quilometragem }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Fabricação">
+        <mat-header-cell *matHeaderCellDef> Fabricação </mat-header-cell>
+        <mat-cell *matCellDef="let veiculos"> {{ veiculos.anoFabricacao }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Caçamba">
+        <mat-header-cell *matHeaderCellDef> Caçamba </mat-header-cell>
+        <mat-cell *matCellDef="let veiculos">  
+            <mat-icon *ngIf="veiculos.possuiCacamba==true" class="com_cacamba" aria-hidden="false" aria-label="Icone de edição" fontIcon="check_circle"></mat-icon>
+            <mat-icon *ngIf="veiculos.possuiCacamba==false" class="sem_cacamba" aria-hidden="false" aria-label="Icone de edição" fontIcon="cancel"></mat-icon>
+        </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+        <mat-cell *matCellDef="let veiculos">
+          <a routerLink="edit/{{veiculos.id}}">
+            <mat-icon class="edit" aria-hidden="false" aria-label="Icone de edição" fontIcon="edit"></mat-icon>
+          </a>
+          <a routerLink="delete/{{veiculos.id}}">
+            <mat-icon class="delete" aria-hidden="false" aria-label="Icone de edição" fontIcon="delete"></mat-icon>
+          </a>
+        </mat-cell>
+      </ng-container>
+  
+      <!-- Defina mais colunas para os outros atributos -->
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  
+    <mat-paginator
+    [length]="totalElementos"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25, 50]"
+    (page)="onPageChange($event)"
+    showFirstLastButtons
+  ></mat-paginator>
+  </div>
+  
