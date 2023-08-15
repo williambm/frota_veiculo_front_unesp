@@ -13,6 +13,7 @@ import { VeiculoCreateComponent } from './componentes/veiculos/veiculo-create/ve
 import { VeiculoEditComponent } from './componentes/veiculos/veiculo-edit/veiculo-edit.component';
 import { VeiculoDeleteComponent } from './componentes/veiculos/veiculo-delete/veiculo-delete.component';
 import { ViagemListComponent } from './componentes/viagens/viagem-list/viagem-list.component';
+import { ViagemCreateComponent } from './componentes/viagens/viagem-create/viagem-create.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
       { path: 'veiculos/create', component: VeiculoCreateComponent },
       { path: 'veiculos/edit/:id', component: VeiculoEditComponent },
       { path: 'veiculos/delete/:id', component: VeiculoDeleteComponent },
-      { path: 'viagens', component: ViagemListComponent }
+      { path: 'viagens', component: ViagemListComponent },
+      { path: 'viagens/create', component: ViagemCreateComponent }
     ]
    }
 ];

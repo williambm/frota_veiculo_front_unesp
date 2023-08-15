@@ -40,4 +40,11 @@ export class ViagensService {
     this.matriculaUsuario = `${sessionStorage.getItem('matricula')}`
   }
 
+  create(viagem: Viagem): Observable<Viagem> {
+    return this.http.post<Viagem>(
+      `${API_CONFIG.baseUrl}/viagens`,
+      viagem
+    );
+  }
+
 }
