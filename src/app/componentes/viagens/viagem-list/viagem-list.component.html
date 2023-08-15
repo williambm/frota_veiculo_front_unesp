@@ -10,6 +10,11 @@
         <mat-header-cell *matHeaderCellDef> solicitante </mat-header-cell>
         <mat-cell *matCellDef="let viagens"> {{ viagens.solicitanteNome }} </mat-cell>
       </ng-container>
+
+      <ng-container matColumnDef="statusViagem">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.statusViagem }} </mat-cell>
+      </ng-container>
   
       <ng-container matColumnDef="motoristaNome">
         <mat-header-cell *matHeaderCellDef> motorista </mat-header-cell>
@@ -56,25 +61,25 @@
         <mat-cell *matCellDef="let viagens"> {{ viagens.estado }} </mat-cell>
       </ng-container>
 
-      <!-- <ng-container matColumnDef="numero">
-        <mat-header-cell *matHeaderCellDef> numero </mat-header-cell>
-        <mat-cell *matCellDef="let viagens">  
-            <mat-icon *ngIf="viagens.possuiCacamba==true" class="com_cacamba" aria-hidden="false" aria-label="Icone de edição" fontIcon="check_circle"></mat-icon>
-            <mat-icon *ngIf="viagens.possuiCacamba==false" class="sem_cacamba" aria-hidden="false" aria-label="Icone de edição" fontIcon="cancel"></mat-icon>
-        </mat-cell>
-      </ng-container> -->
+      <ng-container matColumnDef="veiculoModelo">
+        <mat-header-cell *matHeaderCellDef> veiculo </mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.veiculoModelo }} </mat-cell>
+      </ng-container>
   
-      <!-- <ng-container matColumnDef="acoes">
+      <ng-container matColumnDef="acoes">
         <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
         <mat-cell *matCellDef="let viagens">
           <a routerLink="edit/{{viagens.id}}">
             <mat-icon class="edit" aria-hidden="false" aria-label="Icone de edição" fontIcon="edit"></mat-icon>
           </a>
-          <a routerLink="delete/{{viagens.id}}">
-            <mat-icon class="delete" aria-hidden="false" aria-label="Icone de edição" fontIcon="delete"></mat-icon>
+          <a *ngIf="(perfilUsuario =='ADMIN' || perfilUsuario =='MOTORISTA')" routerLink="delete/{{viagens.id}}">
+            <mat-icon class="delete" aria-hidden="false" aria-label="Icone de deleção" fontIcon="delete"></mat-icon>
+          </a>
+          <a *ngIf="(perfilUsuario =='MOTORISTA')" routerLink="atribuirse/{{viagens.id}}">
+            <mat-icon class="atribuirse" aria-hidden="false" aria-label="Icone de atribuição" fontIcon="input_circle"></mat-icon>
           </a>
         </mat-cell>
-      </ng-container> -->
+      </ng-container>
   
       <!-- Defina mais colunas para os outros atributos -->
   

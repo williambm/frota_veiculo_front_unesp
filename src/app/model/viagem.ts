@@ -13,5 +13,7 @@ export interface Viagem {
     'cidade': string,
     'estado': string,
     'campusOrigem': string,
+    'statusViagem': string,
+    'veiculoModelo': string,
     'dataViagem': string
 }

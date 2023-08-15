@@ -11,23 +11,25 @@ import { ViagensService } from 'src/app/services/viagens.service';
 export class ViagemListComponent {
 
   viagens: Viagem[][]=[];
-  displayedColumns: string[] = [
-    //'id',
-    //'solicitanteId',
+  //Ordem das colunas
+  displayedColumns: string[] = [    
     'solicitanteNome',
-    //'motoristaId',
-    'motoristaNome',
-    //'veiculoId',
+    'dataViagem',
+    'statusViagem',    
+    'campusOrigem',
+    'motoristaNome',    
+    'veiculoModelo',    
     'cep',
     'logradouro',
-    'numero',
-    //'complemento',
+    'numero',    
     'bairro',
     'cidade',
     'estado',
-    'campusOrigem',
-    'dataViagem'
+    'acoes'
   ];
+  
+  //Controle de perfil de usuário
+  perfilUsuario:string=''
   
   pageIndex: number = 0; // Página atual
   pageSize: number = 5; // Tamanho da página
@@ -37,6 +39,7 @@ export class ViagemListComponent {
 
   ngOnInit():void{
     this.carregarViagens()
+    this.verificaPerfilUsuario()
   }
 
   carregarViagens(): void {
@@ -58,6 +61,10 @@ export class ViagemListComponent {
       .subscribe((resposta) => {
         this.viagens = resposta.content;
       });
+  }
+
+  verificaPerfilUsuario(){
+    this.perfilUsuario = `${sessionStorage.getItem('perfil')}`
   }
 
 }
