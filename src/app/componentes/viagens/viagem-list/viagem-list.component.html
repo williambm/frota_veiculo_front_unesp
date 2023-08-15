@@ -69,13 +69,13 @@
       <ng-container matColumnDef="acoes">
         <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
         <mat-cell *matCellDef="let viagens">
-          <a routerLink="edit/{{viagens.id}}">
+          <a *ngIf="(false)"  routerLink="edit/{{viagens.id}}">
             <mat-icon class="edit" aria-hidden="false" aria-label="Icone de edição" fontIcon="edit"></mat-icon>
           </a>
-          <a *ngIf="(perfilUsuario =='ADMIN' || perfilUsuario =='MOTORISTA')" routerLink="delete/{{viagens.id}}">
+          <a *ngIf="(false)" routerLink="delete/{{viagens.id}}">
             <mat-icon class="delete" aria-hidden="false" aria-label="Icone de deleção" fontIcon="delete"></mat-icon>
           </a>
-          <a *ngIf="(perfilUsuario =='MOTORISTA')" routerLink="atribuirse/{{viagens.id}}">
+          <a *ngIf="(perfilUsuario =='MOTORISTA')" (click)="atribuirse(viagens.id)">
             <mat-icon class="atribuirse" aria-hidden="false" aria-label="Icone de atribuição" fontIcon="input_circle"></mat-icon>
           </a>
         </mat-cell>

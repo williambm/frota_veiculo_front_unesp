@@ -16,6 +16,7 @@ import { ViagemListComponent } from './componentes/viagens/viagem-list/viagem-li
 import { ViagemCreateComponent } from './componentes/viagens/viagem-create/viagem-create.component';
 
 
+
 const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
       { path: 'veiculos/edit/:id', component: VeiculoEditComponent },
       { path: 'veiculos/delete/:id', component: VeiculoDeleteComponent },
       { path: 'viagens', component: ViagemListComponent },
-      { path: 'viagens/create', component: ViagemCreateComponent }
+      { path: 'viagens/create', component: ViagemCreateComponent }      
     ]
    }
 ];

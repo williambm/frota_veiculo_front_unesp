@@ -4,6 +4,7 @@ import { Viagem } from '../model/viagem';
 import { Paginacao } from '../model/paginacao';
 import { Observable } from 'rxjs';
 import { API_CONFIG } from '../config/endpoints';
+import { Motorista } from '../model/motorista';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,13 @@ export class ViagensService {
     return this.http.post<Viagem>(
       `${API_CONFIG.baseUrl}/viagens`,
       viagem
+    );
+  }
+
+  atribuirMotorista(viagemId: Viagem, motorista:Motorista): Observable<void> {
+    return this.http.post<void>(
+      `${API_CONFIG.baseUrl}/viagens/${viagemId}/motorista`,
+      motorista
     );
   }
 
