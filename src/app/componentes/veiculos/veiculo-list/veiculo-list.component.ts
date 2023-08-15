@@ -36,7 +36,7 @@ export class VeiculoListComponent {
   carregarVeiculos(): void {
     this.veiculoService.findAllPaginado(0, 5).subscribe((resposta) => {
       this.veiculos = resposta.content;
-      this.totalElementos = resposta.totalElements; // Atualiza o total de funcionários
+      this.totalElementos = resposta.totalElements; 
     });
   }
 

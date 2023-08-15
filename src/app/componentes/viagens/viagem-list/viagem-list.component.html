@@ -1,0 +1,93 @@
+<div class="container">
+    <button routerLink="create" class="cadastrar_btn" mat-raised-button color="primary">Cadastrar Veículo</button>
+    <mat-table [dataSource]="viagens" class="mat-elevation-z8">
+      <ng-container matColumnDef="Id">
+        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.id }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="solicitanteNome">
+        <mat-header-cell *matHeaderCellDef> solicitante </mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.solicitanteNome }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="motoristaNome">
+        <mat-header-cell *matHeaderCellDef> motorista </mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.motoristaNome }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="dataViagem">
+        <mat-header-cell *matHeaderCellDef> Data da Viagem </mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.dataViagem }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="campusOrigem">
+        <mat-header-cell *matHeaderCellDef> Origem </mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.campusOrigem }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="cep">
+        <mat-header-cell *matHeaderCellDef> CEP </mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.cep }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="logradouro">
+        <mat-header-cell *matHeaderCellDef> logradouro</mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.logradouro }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="numero">
+        <mat-header-cell *matHeaderCellDef> numero</mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.numero }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="bairro">
+        <mat-header-cell *matHeaderCellDef> bairro</mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.bairro }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="cidade">
+        <mat-header-cell *matHeaderCellDef> cidade</mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.cidade }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="estado">
+        <mat-header-cell *matHeaderCellDef> estado</mat-header-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.estado }} </mat-cell>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="numero">
+        <mat-header-cell *matHeaderCellDef> numero </mat-header-cell>
+        <mat-cell *matCellDef="let viagens">  
+            <mat-icon *ngIf="viagens.possuiCacamba==true" class="com_cacamba" aria-hidden="false" aria-label="Icone de edição" fontIcon="check_circle"></mat-icon>
+            <mat-icon *ngIf="viagens.possuiCacamba==false" class="sem_cacamba" aria-hidden="false" aria-label="Icone de edição" fontIcon="cancel"></mat-icon>
+        </mat-cell>
+      </ng-container> -->
+  
+      <!-- <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+        <mat-cell *matCellDef="let viagens">
+          <a routerLink="edit/{{viagens.id}}">
+            <mat-icon class="edit" aria-hidden="false" aria-label="Icone de edição" fontIcon="edit"></mat-icon>
+          </a>
+          <a routerLink="delete/{{viagens.id}}">
+            <mat-icon class="delete" aria-hidden="false" aria-label="Icone de edição" fontIcon="delete"></mat-icon>
+          </a>
+        </mat-cell>
+      </ng-container> -->
+  
+      <!-- Defina mais colunas para os outros atributos -->
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  
+    <mat-paginator
+    [length]="totalElementos"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25, 50]"
+    (page)="onPageChange($event)"
+    showFirstLastButtons
+  ></mat-paginator>
+  </div>
+  

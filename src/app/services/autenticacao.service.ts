@@ -46,6 +46,7 @@ export class AutenticacaoService {
     sessionStorage.setItem('nome', descodeToken.nome);
     sessionStorage.setItem('email', descodeToken.email);
     sessionStorage.setItem('perfil', descodeToken.roles);
+    sessionStorage.setItem('matricula', descodeToken.matricula);
   }
 
   isAutenticado(): boolean {
