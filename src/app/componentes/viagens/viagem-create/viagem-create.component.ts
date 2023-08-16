@@ -99,7 +99,13 @@ export class ViagemCreateComponent {
       this.route.navigate(['/viagens'])
     },
     responseError => {
-      console.log(responseError)
+      if (responseError.error.errors) {
+        responseError.error.errors.forEach((element: { message: string | undefined; fieldName: string | undefined; }) => {
+          this.toast.error(element.message, element.fieldName)
+        });
+      } else {
+        this.toast.error(`${responseError.error.message}`, `${responseError.error.error}`)
+      }
     }
     )
   }
