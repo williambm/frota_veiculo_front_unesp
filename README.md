@@ -1,5 +1,18 @@
-# FrotaVeiculoFront
+# FrotaVeiculoFront - V1 - MVP
+Nesta versão está compreendido o controle de login de usuários, cadastro de funcionários, veículos e de solicitação de viagens.
 
+Na V1 o MVP foi fechada com o fluxo de solicitação de viagens por qualquer perfil de usuário e com a função de auto atribuição por parte dos motoristas.
+
+Pontos a melhorar:
+
+- Datepicker com problema de formatação de datas.
+- Select box com campos fixos precisam ser abastecidos pelas APIs, deixando dinâmico o conteúdo a ser exibido.
+- No cadastro de veículos e pessoas é necessário ter a foto associada ao registro.
+- Ao inserir um CEP de destino ter o formulário sendo auto preenchido.
+- Gerar relatório em PDF de corridas.
+- Gerar Dashboard de dados do sistema.
+
+---------
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.8.
 
 ## Development server
