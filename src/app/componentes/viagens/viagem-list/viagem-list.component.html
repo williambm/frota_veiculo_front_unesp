@@ -5,7 +5,7 @@
         <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
         <mat-cell *matCellDef="let viagens"> {{ viagens.id }} </mat-cell>
       </ng-container>
-  
+
       <ng-container matColumnDef="solicitanteNome">
         <mat-header-cell *matHeaderCellDef> solicitante </mat-header-cell>
         <mat-cell *matCellDef="let viagens"> {{ viagens.solicitanteNome }} </mat-cell>
@@ -13,19 +13,24 @@
 
       <ng-container matColumnDef="statusViagem">
         <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-        <mat-cell *matCellDef="let viagens"> {{ viagens.statusViagem }} </mat-cell>
+        <mat-cell *matCellDef="let viagens" [ngClass]="viagens.statusViagem=='SOLICITADA'?'statusViagemSolicitada':'statusViagemConfirmada'">
+          <mat-icon>
+            {{viagens.statusViagem=='SOLICITADA'?'timelapse':'checked'}}
+          </mat-icon>
+            {{viagens.statusViagem}}
+        </mat-cell>
       </ng-container>
-  
+
       <ng-container matColumnDef="motoristaNome">
         <mat-header-cell *matHeaderCellDef> motorista </mat-header-cell>
         <mat-cell *matCellDef="let viagens"> {{ viagens.motoristaNome }} </mat-cell>
       </ng-container>
-  
+
       <ng-container matColumnDef="dataViagem">
         <mat-header-cell *matHeaderCellDef> Data da Viagem </mat-header-cell>
         <mat-cell *matCellDef="let viagens"> {{ viagens.dataViagem }} </mat-cell>
       </ng-container>
-  
+
       <ng-container matColumnDef="campusOrigem">
         <mat-header-cell *matHeaderCellDef> Origem </mat-header-cell>
         <mat-cell *matCellDef="let viagens"> {{ viagens.campusOrigem }} </mat-cell>
@@ -65,7 +70,7 @@
         <mat-header-cell *matHeaderCellDef> veiculo </mat-header-cell>
         <mat-cell *matCellDef="let viagens"> {{ viagens.veiculoModelo }} </mat-cell>
       </ng-container>
-  
+
       <ng-container matColumnDef="acoes">
         <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
         <mat-cell *matCellDef="let viagens">
@@ -80,13 +85,13 @@
           </a>
         </mat-cell>
       </ng-container>
-  
+
       <!-- Defina mais colunas para os outros atributos -->
-  
+
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
-  
+
     <mat-paginator
     [length]="totalElementos"
     [pageSize]="pageSize"
@@ -95,4 +100,3 @@
     showFirstLastButtons
   ></mat-paginator>
   </div>
-  

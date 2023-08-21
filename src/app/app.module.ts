@@ -37,6 +37,11 @@ import { VeiculoEditComponent } from './componentes/veiculos/veiculo-edit/veicul
 import { VeiculoDeleteComponent } from './componentes/veiculos/veiculo-delete/veiculo-delete.component';
 import { ViagemListComponent } from './componentes/viagens/viagem-list/viagem-list.component';
 import { ViagemCreateComponent } from './componentes/viagens/viagem-create/viagem-create.component';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import localept from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+registerLocaleData(localept, 'pt');
+
 
 
 @NgModule({
@@ -55,7 +60,7 @@ import { ViagemCreateComponent } from './componentes/viagens/viagem-create/viage
     VeiculoEditComponent,
     VeiculoDeleteComponent,
     ViagemListComponent,
-    ViagemCreateComponent    
+    ViagemCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +91,8 @@ import { ViagemCreateComponent } from './componentes/viagens/viagem-create/viage
   ],
   providers: [
     AuthInterceptorProvider,
-    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt' },
+    // { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     DatePipe
   ],
   bootstrap: [AppComponent]

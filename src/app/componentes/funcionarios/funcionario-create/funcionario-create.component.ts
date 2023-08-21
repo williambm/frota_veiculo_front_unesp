@@ -51,7 +51,8 @@ export class FuncionarioCreateComponent {
   }
 
   criar(){
-    const formattedDataAdmissao = this.datePipe.transform(this.funcionario.dataAdmissao, 'yyyy-MM-dd');
+    const formattedDataAdmissao = this.datePipe.transform(this.funcionario.dataAdmissao, 'yyyy-MM-dd','-0300','pt');
+
     const formattedDataNascimento = this.datePipe.transform(this.funcionario.dataNascimento, 'yyyy-MM-dd');
 
     //Ajuste dos atributos de funcionário
