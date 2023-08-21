@@ -1,8 +1,10 @@
+import { Paginacao } from './../../../model/paginacao';
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs';
 import { Veiculo } from 'src/app/model/veiculo';
 import { Viagem } from 'src/app/model/viagem';
 import { VeiculosService } from 'src/app/services/veiculos.service';
@@ -14,7 +16,7 @@ import { ViagensService } from 'src/app/services/viagens.service';
   styleUrls: ['./viagem-create.component.css'],
 })
 export class ViagemCreateComponent {
-  
+
   viagens: Viagem = {
     solicitanteId: '',
     //motoristaNome: '',
@@ -25,15 +27,19 @@ export class ViagemCreateComponent {
     bairro: '',
     cidade: '',
     estado: '',
-    campusOrigem: '',    
+    campusOrigem: '',
     //veiculoModelo: '',
     dataViagem: '',
   };
-  
+
+  veiculos:Veiculo={}
+  //viagens: Viagem | any = {};
+
   //Usado para popular select do formulario
   cargaDeVeiculos:Veiculo[][]=[];
   veiculosSemPaginacao:Veiculo[]=[];
-  veiculoItem:Veiculo ={};
+  veiculosArray:Veiculo[]=[]
+  veiculo$=this.veiculosService.findAllPaginadoV2$(0,50);
 
   constructor(
     private datePipe: DatePipe, //Pipe de datas do angular para ajustar datas
@@ -45,6 +51,7 @@ export class ViagemCreateComponent {
 
   ngOnInit():void{
     this.carregarVeiculos()
+    this.carregarVeiculosDaAPI()
   }
 
   solicitanteNome: FormControl = new FormControl(null, Validators.required);
@@ -69,7 +76,7 @@ export class ViagemCreateComponent {
       this.bairro.valid &&
       this.cidade.valid &&
       this.estado.valid &&
-      this.campusOrigem.valid &&      
+      this.campusOrigem.valid &&
       this.dataViagem
     );
   }
@@ -78,22 +85,23 @@ export class ViagemCreateComponent {
   carregarVeiculos(){
     //Hoje faço um EAGER destes dados - futuramente achar melhor tecnica para isso
     this.veiculosService.findAllPaginado(0, 5).subscribe((resposta) => {
-      this.cargaDeVeiculos = resposta.content;  
-      console.log(this.cargaDeVeiculos)    
+      this.cargaDeVeiculos = resposta.content;
+      //resposta.content
+      console.log(this.cargaDeVeiculos)
 
       // this.cargaDeVeiculos.forEach(element => this.veiculosSemPaginacao.push(
       //   this.veiculoItem.id = element.
-      // )); 
+      // ));
     });
   }
 
-  criar(){    
+  criar(){
     const formattedDataViagem = this.datePipe.transform(this.viagens.dataViagem, 'yyyy-MM-dd');
-    
+
     //Composição dos dados de Viagem
     this.viagens.dataViagem = `${formattedDataViagem}`
     this.viagens.solicitanteId = `${sessionStorage.getItem('matricula')}`
-    
+
     this.viagensService.create(this.viagens).subscribe(resposta=>{
       this.toast.info(`Viagem solicitada com sucesso`,'SUCESSO')
       this.route.navigate(['/viagens'])
@@ -108,5 +116,14 @@ export class ViagemCreateComponent {
       }
     }
     )
+  }
+
+  carregarVeiculosDaAPI() {
+    this.veiculosService.findAllPaginadoV2$(0,50)
+    .subscribe({
+      next:resposta=>{console.log(resposta), this.veiculosArray = resposta.content},
+      error:respostaErro=>console.log(respostaErro),
+      complete:()=>console.log('Fim da execução do observable de findAllPaginadoV2')
+    })
   }
 }

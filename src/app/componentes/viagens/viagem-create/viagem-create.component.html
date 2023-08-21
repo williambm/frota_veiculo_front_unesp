@@ -1,4 +1,4 @@
-<div class="container mat-elevation-z8">
+<div class="container mat-elevation-z8" >
   <form class="form">
     <h1 class="fullWidth">Solicitar Viagem</h1>
 
@@ -31,7 +31,7 @@
         <mat-option [value]="'ASSIS'">Assis</mat-option>
         <mat-option [value]="'BAURU'">Bauru</mat-option>
       </mat-select>
-      
+
     </mat-form-field>
 
     <mat-form-field class="fullWidth">
@@ -44,7 +44,7 @@
         matInput
         placeholder="Ex.Rua João do Amaral"
         maxlength="80"
-      />      
+      />
     </mat-form-field>
 
     <mat-form-field class="halfWidth halfWidth_ajust">
@@ -58,7 +58,7 @@
         matInput
         placeholder="Ex.. 103"
         maxlength="10"
-      />      
+      />
     </mat-form-field>
 
     <mat-form-field class="halfWidth">
@@ -70,7 +70,7 @@
         matInput
         placeholder="Ex.. apartamento 56 bloco 4"
         maxlength="50"
-      />      
+      />
     </mat-form-field>
 
     <mat-form-field class="halfWidth halfWidth_ajust">
@@ -82,7 +82,7 @@
         required
         matInput
         placeholder="Ex.. 03312-045"
-      />      
+      />
     </mat-form-field>
 
     <mat-form-field class="halfWidth">
@@ -94,7 +94,7 @@
         required
         matInput
         placeholder="Ex.. SP"
-      />      
+      />
     </mat-form-field>
 
     <mat-form-field class="fullWidth">
@@ -106,7 +106,7 @@
         required
         matInput
         placeholder="Ex.. Casa Verde"
-      />      
+      />
     </mat-form-field>
 
     <mat-form-field class="fullWidth">
@@ -118,32 +118,20 @@
         required
         matInput
         placeholder="Ex.. São Paulo"
-      />      
+      />
     </mat-form-field>
 
-    <!-- <mat-form-field class="fullWidth">
+    <mat-form-field class="fullWidth" *ngIf="veiculo$ |async as veiculos ">
       <mat-label>Carro</mat-label>
-      <mat-select [(ngModel)]="cargaDeVeiculos" name="veiculoId">
-        <mat-option *ngFor="let veiculo of cargaDeVeiculos" [value]="veiculo">
-          {{ veiculo }}
-        </mat-option>
+      <mat-select [(ngModel)]="viagens.veiculoId" name="veiculoId">
+        <div >
+          <mat-option *ngFor="let veiculo of veiculos.content" [value]="veiculo.id">
+            {{ veiculo.modelo }}
+          </mat-option>
+        </div>
       </mat-select>
-      <mat-icon matSuffix
-        ><span class="material-symbols-outlined"> description </span></mat-icon
-      >
-    </mat-form-field> -->
-
-    <mat-form-field class="fullWidth">
-      <mat-label>Carro</mat-label>
-      <mat-select
-        [(ngModel)]="viagens.veiculoId"
-        name="veiculoId"
-      >
-        <mat-option [value]="1">Focus</mat-option>
-        <mat-option [value]="4">Ka</mat-option>
-        <mat-option [value]="7">Ranger</mat-option>        
-      </mat-select>      
     </mat-form-field>
+
 
     <button
       class="fullWidth mat-elevation-z4"

@@ -21,7 +21,7 @@ export class VeiculosService {
     );
   }
 
-  findById(pathParamId: number): Observable<Veiculo> {    
+  findById(pathParamId: number): Observable<Veiculo> {
     return this.http.get<Veiculo>(
       `${API_CONFIG.baseUrl}/veiculos/${pathParamId}`
     );
@@ -39,5 +39,10 @@ export class VeiculosService {
     return this.http.delete<Veiculo>(
       `${API_CONFIG.baseUrl}/veiculos/${veiculo.id}`);
   }
+
+  //Outra forma de Criar um observable - por convenção essa variáel de fim $ representa a execução desta função/Observable
+  findAllPaginadoV2$ = (page: number, size: number): Observable<Paginacao<Veiculo>> =>
+    this.http.get<Paginacao<Veiculo>>(`${API_CONFIG.baseUrl}/veiculos?page=${page}&size=${size}&sort=id`);
+
 
 }
