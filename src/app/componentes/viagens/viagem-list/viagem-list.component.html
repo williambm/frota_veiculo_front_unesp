@@ -14,10 +14,7 @@
       <ng-container matColumnDef="statusViagem">
         <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
         <mat-cell *matCellDef="let viagens" [ngClass]="viagens.statusViagem=='SOLICITADA'?'statusViagemSolicitada':'statusViagemConfirmada'">
-          <mat-icon>
-            {{viagens.statusViagem=='SOLICITADA'?'timelapse':'checked'}}
-          </mat-icon>
-            {{viagens.statusViagem}}
+          {{viagens.statusViagem}}
         </mat-cell>
       </ng-container>
 
@@ -38,7 +35,7 @@
 
       <ng-container matColumnDef="cep">
         <mat-header-cell *matHeaderCellDef> CEP </mat-header-cell>
-        <mat-cell *matCellDef="let viagens"> {{ viagens.cep }} </mat-cell>
+        <mat-cell *matCellDef="let viagens"> {{ viagens.cep | mask: '00000-000'}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="logradouro">

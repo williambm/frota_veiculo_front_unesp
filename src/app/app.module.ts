@@ -40,6 +40,7 @@ import { ViagemCreateComponent } from './componentes/viagens/viagem-create/viage
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import localept from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 registerLocaleData(localept, 'pt');
 
 
@@ -86,6 +87,8 @@ registerLocaleData(localept, 'pt');
       closeButton:true,
       progressBar:true
     }),
+    NgxMaskDirective,
+    NgxMaskPipe,
     BrowserAnimationsModule,
     AppRoutingModule
   ],
@@ -93,6 +96,7 @@ registerLocaleData(localept, 'pt');
     AuthInterceptorProvider,
     { provide: MAT_DATE_LOCALE, useValue: 'pt' },
     // { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
+    provideNgxMask(),
     DatePipe
   ],
   bootstrap: [AppComponent]

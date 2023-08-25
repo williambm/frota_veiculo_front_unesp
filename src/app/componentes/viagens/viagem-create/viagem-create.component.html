@@ -34,6 +34,32 @@
 
     </mat-form-field>
 
+    <mat-form-field class="halfWidth halfWidth_ajust">
+      <mat-label>cep</mat-label>
+      <input
+        [(ngModel)]="viagens.cep"
+        [formControl]="cep"
+        (blur)="teste()"
+        name="cep"
+        mask="00000-000"
+        required
+        matInput
+        placeholder="Ex.. 03312-045"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="halfWidth">
+      <mat-label>estado</mat-label>
+      <input
+        [(ngModel)]="viagens.estado"
+        [formControl]="estado"
+        name="estado"
+        required
+        matInput
+        placeholder="Ex.. SP"
+      />
+    </mat-form-field>
+
     <mat-form-field class="fullWidth">
       <mat-label>Logradouro</mat-label>
       <input
@@ -66,34 +92,10 @@
       <input
         [(ngModel)]="viagens.complemento"
         name="complemento"
-        [formControl]="complemento"
+
         matInput
         placeholder="Ex.. apartamento 56 bloco 4"
         maxlength="50"
-      />
-    </mat-form-field>
-
-    <mat-form-field class="halfWidth halfWidth_ajust">
-      <mat-label>cep</mat-label>
-      <input
-        [(ngModel)]="viagens.cep"
-        [formControl]="cep"
-        name="cep"
-        required
-        matInput
-        placeholder="Ex.. 03312-045"
-      />
-    </mat-form-field>
-
-    <mat-form-field class="halfWidth">
-      <mat-label>estado</mat-label>
-      <input
-        [(ngModel)]="viagens.estado"
-        [formControl]="estado"
-        name="estado"
-        required
-        matInput
-        placeholder="Ex.. SP"
       />
     </mat-form-field>
 

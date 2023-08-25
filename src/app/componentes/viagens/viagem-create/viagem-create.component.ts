@@ -50,15 +50,13 @@ export class ViagemCreateComponent {
   ) {}
 
   ngOnInit():void{
-    this.carregarVeiculos()
     this.carregarVeiculosDaAPI()
   }
 
   solicitanteNome: FormControl = new FormControl(null, Validators.required);
-  cep: FormControl = new FormControl(null, Validators.required);
+  cep: FormControl = new FormControl(null, Validators.pattern('^[0-9]{5}[0-9]{3}')); //Regex para formato de CEP - NÃO ACEITOU O PATTERN /d etc
   logradouro: FormControl = new FormControl(null, Validators.required);
   numero: FormControl = new FormControl(null, Validators.required);
-  complemento: FormControl = new FormControl(null, Validators.required);
   bairro: FormControl = new FormControl(null, Validators.required);
   cidade: FormControl = new FormControl(null, Validators.required);
   estado: FormControl = new FormControl(null, Validators.required);
@@ -72,27 +70,12 @@ export class ViagemCreateComponent {
       this.cep.valid &&
       this.logradouro.valid &&
       this.numero.valid &&
-      this.complemento.valid &&
       this.bairro.valid &&
       this.cidade.valid &&
       this.estado.valid &&
       this.campusOrigem.valid &&
       this.dataViagem
     );
-  }
-
-  //TODO: Implementar a alimentação o select de veiculos de forma dinâmica via API - Hoje está estático.
-  carregarVeiculos(){
-    //Hoje faço um EAGER destes dados - futuramente achar melhor tecnica para isso
-    this.veiculosService.findAllPaginado(0, 5).subscribe((resposta) => {
-      this.cargaDeVeiculos = resposta.content;
-      //resposta.content
-      console.log(this.cargaDeVeiculos)
-
-      // this.cargaDeVeiculos.forEach(element => this.veiculosSemPaginacao.push(
-      //   this.veiculoItem.id = element.
-      // ));
-    });
   }
 
   criar(){
@@ -121,9 +104,24 @@ export class ViagemCreateComponent {
   carregarVeiculosDaAPI() {
     this.veiculosService.findAllPaginadoV2$(0,50)
     .subscribe({
-      next:resposta=>{console.log(resposta), this.veiculosArray = resposta.content},
+      next:resposta=>{this.veiculosArray = resposta.content},
       error:respostaErro=>console.log(respostaErro),
       complete:()=>console.log('Fim da execução do observable de findAllPaginadoV2')
+    })
+  }
+
+  teste(){
+    console.log('veio da remoção de foco')
+    this.viagensService.pesquisaCep$(this.viagens.cep)
+    .subscribe({
+      next: resposta => {
+        console.log(resposta),
+        this.viagens.bairro = resposta.bairro,
+        this.viagens.cidade = resposta.localidade,
+        this.viagens.logradouro = resposta.logradouro,
+        this.viagens.estado = resposta.uf
+      },
+      error: respostaErro => console.log(console.log)
     })
   }
 }
