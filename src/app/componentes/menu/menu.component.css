@@ -25,3 +25,14 @@ img {
     color: white;
 }
 
+.cabecalho_menu{
+  color: white;
+  border-bottom-style: solid;
+  border-bottom-color:white;
+  margin: auto;
+  text-align: center;
+}
+
+.cabecalho_menu span{
+  color: darkcyan;
+}

@@ -1,7 +1,12 @@
 <mat-drawer-container class="container" autosize>
   <app-cabecalho></app-cabecalho>
   <mat-drawer #drawer class="sidenav" mode="side">
-    <img src="../../../assets/img/logo.png" alt="logo unesp" />
+    <!-- <img src="../../../assets/img/logo.png" alt="logo unesp" /> -->
+    <div class="cabecalho_menu">
+      <h2>UNESP</h2>
+      <P>Solicitação de viagens</P>
+      <span>V2.0</span>
+    </div>
     <mat-nav-list class="nav-list">
       <a mat-list-item routerLink="/home">
         <i class="material-icons">home</i>
@@ -15,14 +20,14 @@
         <i class="material-icons">badge</i>
         <span>Funcionários</span>
       </a>
-      <a 
+      <a
       mat-list-item routerLink="/viagens">
         <i class="material-icons">map</i>
         <span>Viagens</span>
       </a>
-      <a 
-        *ngIf="validaRenderizacao() == 'ADMIN'" 
-        mat-list-item 
+      <a
+        *ngIf="validaRenderizacao() == 'ADMIN'"
+        mat-list-item
         routerLink="/veiculos">
         <i class="material-icons">directions_car</i>
         <span>Veículos</span>
