@@ -1,0 +1,39 @@
+.container{
+  width: 90%;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+.form {
+  width: 50%;
+}
+
+.fullWidth{
+  width: 100%;
+}
+
+.input_arquivo_invalido{
+  color: red;
+  font-style: oblique;
+}
+
+.card img{
+  height: 13rem;
+  margin: auto;
+}
+
+.card{
+  text-align: left;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .card-header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */

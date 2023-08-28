@@ -1,5 +1,9 @@
 <div class="container">
+
   <button routerLink="create" class="cadastrar_btn" mat-raised-button color="primary">Cadastrar Funcionário</button>
+  <!-- TODO: Teste de upload de imagem -->
+  <button routerLink="imagem" class="cadastrar_btn" mat-raised-button color="primary">TESTE UPLOAD IMG</button>
+
   <mat-table [dataSource]="funcionarios" class="mat-elevation-z8">
     <ng-container matColumnDef="matricula">
       <mat-header-cell *matHeaderCellDef> Matrícula </mat-header-cell>

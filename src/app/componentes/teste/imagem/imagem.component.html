@@ -1,0 +1,40 @@
+<div class="container">
+  <form class="form">
+    <mat-form-field class="fullWidth">
+      <div>
+        <input
+          matInput
+          [value]="fileName"
+          [ngClass]="
+            fileName == '' ? 'input_arquivo_valido' : 'input_arquivo_invalido'
+          "
+          readonly
+        />
+
+        <input
+          type="file"
+          id="fileInput"
+          (change)="selecionaArquivo($event)"
+          name="fileInput"
+        />
+      </div>
+    </mat-form-field>
+
+    <mat-card class="card" *ngIf="fileName !=''">
+      <mat-card-header class="card-header">
+        <div mat-card-avatar class="header-image"></div>
+        <!-- <mat-card-title>{{tituloCard}}</mat-card-title> -->
+        <mat-card-subtitle>Visualização da Imagem</mat-card-subtitle>
+      </mat-card-header>
+      <img [src]="fileUrl" />
+      <mat-card-content>
+        <p><b>Nome do Arquivo:</b> {{ fileName }}</p>
+        <p><b>Tamanho do Arquivo:</b> {{ tamanhoArquivo }}</p>
+        <p><b>Tipo do Arquivo:</b> {{ extensaoArquivo }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">Upload</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

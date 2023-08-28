@@ -41,6 +41,7 @@ import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapte
 import localept from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { ImagemComponent } from './componentes/teste/imagem/imagem.component';
 registerLocaleData(localept, 'pt');
 
 
@@ -61,7 +62,8 @@ registerLocaleData(localept, 'pt');
     VeiculoEditComponent,
     VeiculoDeleteComponent,
     ViagemListComponent,
-    ViagemCreateComponent
+    ViagemCreateComponent,
+    ImagemComponent
   ],
   imports: [
     BrowserModule,
