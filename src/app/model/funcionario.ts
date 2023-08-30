@@ -7,4 +7,5 @@ export interface Funcionario{
   dataNascimento: string;
   funcao: string;
   perfil: string;
+  imagemPerfilId?: number
 }

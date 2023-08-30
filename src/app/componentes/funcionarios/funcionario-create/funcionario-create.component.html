@@ -2,6 +2,9 @@
   <form class="form">
     <h1 class="fullWidth">Cadastrar Funcionário</h1>
 
+      <!-- Insiro no HTML o componente de IMG -->
+      <app-imagem (fotoCadastrada$)="capturaIdDaImgAssociada($event)"></app-imagem>
+
     <mat-form-field class="halfWidth halfWidth_ajust">
       <mat-label>Matrícula</mat-label>
       <input
@@ -19,16 +22,14 @@
 
     <mat-form-field class="halfWidth">
       <mat-label>Perfil</mat-label>
-        <mat-select
-        [(ngModel)]="funcionario.perfil"
-        [formControl]="perfil">
-          <mat-option [value]="'PASSAGEIRO'">Passageiro</mat-option>
-          <mat-option [value]="'MOTORISTA'">Motorista</mat-option>
-          <mat-option [value]="'ADMIN'">Administrador</mat-option>
-        </mat-select>
-      <mat-icon matSuffix><span class="material-symbols-outlined">
-description
-</span></mat-icon>
+      <mat-select [(ngModel)]="funcionario.perfil" [formControl]="perfil">
+        <mat-option [value]="'PASSAGEIRO'">Passageiro</mat-option>
+        <mat-option [value]="'MOTORISTA'">Motorista</mat-option>
+        <mat-option [value]="'ADMIN'">Administrador</mat-option>
+      </mat-select>
+      <mat-icon matSuffix
+        ><span class="material-symbols-outlined"> description </span></mat-icon
+      >
     </mat-form-field>
 
     <mat-form-field class="fullWidth">
@@ -67,7 +68,8 @@ description
         [formControl]="dataAdmissao"
         required
         matInput
-        [matDatepicker]="admissaoPicker" />
+        [matDatepicker]="admissaoPicker"
+      />
       <mat-hint>DD/MM/YYYY</mat-hint>
       <mat-datepicker-toggle
         matIconSuffix
@@ -83,7 +85,8 @@ description
         [formControl]="dataNascimento"
         required
         matInput
-        [matDatepicker]="nascimentoPicker" />
+        [matDatepicker]="nascimentoPicker"
+      />
       <mat-hint>DD/MM/YYYY</mat-hint>
       <mat-datepicker-toggle
         matIconSuffix
@@ -124,7 +127,8 @@ description
       (click)="criar()"
       [disabled]="!validaCampos()"
       mat-flat-button
-      color="primary">
+      color="primary"
+    >
       Cadastrar
     </button>
     <button

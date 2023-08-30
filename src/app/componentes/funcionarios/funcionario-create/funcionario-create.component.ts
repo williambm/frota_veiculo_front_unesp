@@ -77,4 +77,10 @@ export class FuncionarioCreateComponent {
     )
 
   }
+
+  //O Html faz um bind do componente filho para este do Pai passando o ID da magem salva no BD
+  capturaIdDaImgAssociada(id:number){
+    this.funcionario.imagemPerfilId=id;
+    console.log(id)
+  }
 }
