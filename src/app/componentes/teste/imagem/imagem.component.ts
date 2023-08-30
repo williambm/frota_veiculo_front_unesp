@@ -1,5 +1,5 @@
 import { ImagemService } from './../../../services/imagem.service';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-imagem',
@@ -7,7 +7,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./imagem.component.css'],
 })
 export class ImagemComponent {
-  //Criando uma comunicação do Filho para o Pai é uma espécie de RxJS
+
+  //Criando uma comunicação do Filho para o Pai e vice-versa
+  @Input()  recebeCategoria!: string;
   @Output() fotoCadastrada$ :EventEmitter<number> = new EventEmitter<number>();
 
   //Exibir nome em tela e demais fins
@@ -20,10 +22,19 @@ export class ImagemComponent {
   //vou componentizar esse cara para o projeto então a ideia é que ele seja preenchido conforme as funções do componente sejam preenchidas
   tamanhoArquivo: string = '';
   extensaoArquivo: string = '';
-
-  public categoria:string='';
+  imagemBase64:string='';
+  categoria:string='';
 
   constructor(private imgService: ImagemService) {}
+
+  ngOnInit(): void {
+    //Uso aqui para buscar uma imagem padrão de usuário que é a de ID 1
+    this.buscarImagem();
+
+    //Atribui categoria a foto que vem do componente pai
+    this.categoria=this.recebeCategoria;
+
+  }
 
   //não achei uma forma melhor de tipar esse $event pois dentro dele tem muita informação e o TS da problema de tipagem na navegação do objeto tentei como Event e File e deu erro
   selecionaArquivo(event: any) {
@@ -55,7 +66,7 @@ export class ImagemComponent {
 
   upload() {
     //Com o ! eu estou asusmindo a responsabilidade de que aqui vai estar preenchida a variável currentFile com um File
-    this.imgService.uploadImg$(this.currentFile!).subscribe({
+    this.imgService.uploadImg$(this.currentFile!,this.categoria).subscribe({
       next: (resposta) => {
         console.log(resposta)
         //Aqui eu capturo o evento do @Output e com o emit notifico o componente Pai passando o ID da Imagem relacionada a entidade
@@ -63,6 +74,15 @@ export class ImagemComponent {
       },
       error: (respostaErrro) => console.log(respostaErrro),
     });
+  }
+
+  buscarImagem(){
+    this.imgService.getImg$(1).subscribe({
+      next: resposta => {
+        const imageBlob = new Blob([resposta],{type:'image/png'})
+        this.imagemBase64 = URL.createObjectURL(imageBlob);
+      }
+    })
   }
 
   private formatarTamanhoArquivo(tamanhoBytes: number): string {

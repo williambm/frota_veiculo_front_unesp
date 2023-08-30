@@ -3,7 +3,7 @@
     <h1 class="fullWidth">Cadastrar Funcionário</h1>
 
       <!-- Insiro no HTML o componente de IMG -->
-      <app-imagem (fotoCadastrada$)="capturaIdDaImgAssociada($event)"></app-imagem>
+      <app-imagem [recebeCategoria]="'FUNCIONARIO_PERFIL'" (fotoCadastrada$)="capturaIdDaImgAssociada($event)"></app-imagem>
 
     <mat-form-field class="halfWidth halfWidth_ajust">
       <mat-label>Matrícula</mat-label>

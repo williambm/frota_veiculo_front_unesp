@@ -1,43 +1,67 @@
 <div class="container">
-
-  <button routerLink="create" class="cadastrar_btn" mat-raised-button color="primary">Cadastrar Funcionário</button>
-  <!-- TODO: Teste de upload de imagem -->
-  <button routerLink="imagem" class="cadastrar_btn" mat-raised-button color="primary">TESTE UPLOAD IMG</button>
+  <button
+    routerLink="create"
+    class="cadastrar_btn"
+    mat-raised-button
+    color="primary"
+  >
+    Cadastrar Funcionário
+  </button>
 
   <mat-table [dataSource]="funcionarios" class="mat-elevation-z8">
     <ng-container matColumnDef="matricula">
       <mat-header-cell *matHeaderCellDef> Matrícula </mat-header-cell>
-      <mat-cell *matCellDef="let funcionario"> {{ funcionario.matricula }} </mat-cell>
+      <mat-cell *matCellDef="let funcionario">
+        {{ funcionario.matricula }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="nome">
       <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-      <mat-cell *matCellDef="let funcionario"> {{ funcionario.nome }} </mat-cell>
+      <mat-cell *matCellDef="let funcionario">
+        {{ funcionario.nome }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="funcao">
       <mat-header-cell *matHeaderCellDef> Função </mat-header-cell>
-      <mat-cell *matCellDef="let funcionario"> {{ funcionario.funcao }} </mat-cell>
+      <mat-cell *matCellDef="let funcionario">
+        {{ funcionario.funcao }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="email">
       <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
-      <mat-cell *matCellDef="let funcionario"> {{ funcionario.email }} </mat-cell>
+      <mat-cell *matCellDef="let funcionario">
+        {{ funcionario.email }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="perfil">
       <mat-header-cell *matHeaderCellDef> Perfil </mat-header-cell>
-      <mat-cell *matCellDef="let funcionario"> {{ funcionario.perfil }} </mat-cell>
+      <mat-cell *matCellDef="let funcionario">
+        {{ funcionario.perfil }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="acoes">
       <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
       <mat-cell *matCellDef="let funcionario">
-        <a routerLink="edit/{{funcionario.matricula}}">
-          <mat-icon class="edit" aria-hidden="false" aria-label="Icone de edição" fontIcon="edit"></mat-icon>
+        <a routerLink="edit/{{ funcionario.matricula }}">
+          <mat-icon
+            class="edit"
+            aria-hidden="false"
+            aria-label="Icone de edição"
+            fontIcon="edit"
+          ></mat-icon>
         </a>
-        <a routerLink="delete/{{funcionario.matricula}}">
-          <mat-icon class="delete" aria-hidden="false" aria-label="Icone de edição" fontIcon="delete"></mat-icon>
+        <a routerLink="delete/{{ funcionario.matricula }}">
+          <mat-icon
+            class="delete"
+            aria-hidden="false"
+            aria-label="Icone de edição"
+            fontIcon="delete"
+          ></mat-icon>
         </a>
       </mat-cell>
     </ng-container>
@@ -49,10 +73,10 @@
   </mat-table>
 
   <mat-paginator
-  [length]="totalElementos"
-  [pageSize]="pageSize"
-  [pageSizeOptions]="[5, 10, 25, 50]"
-  (page)="onPageChange($event)"
-  showFirstLastButtons
-></mat-paginator>
+    [length]="totalElementos"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25, 50]"
+    (page)="onPageChange($event)"
+    showFirstLastButtons
+  ></mat-paginator>
 </div>

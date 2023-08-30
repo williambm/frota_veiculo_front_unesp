@@ -40,6 +40,16 @@
           </button>
         </mat-card-actions>
       </mat-card>
+
+      <!-- Exibe como padrão uma imagem default e esconde esse card quando o usuário faz a submissão de nova imagem para mostrar a prévia dele -->
+      <!-- <mat-card class="halfWidth" *ngIf="fileName == ''">
+        <img [src]="imagemBase64" />
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="upload()">
+            Upload
+          </button>
+        </mat-card-actions>
+      </mat-card> -->
     </div>
   </form>
 </div>

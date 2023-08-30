@@ -29,6 +29,7 @@ export class FuncionarioCreateComponent {
     dataNascimento: '',
     funcao: '',
     perfil: 'PASSAGEIRO',
+    imagemPerfilId:1
   };
 
   matricula:FormControl = new FormControl(null,Validators.required);
@@ -80,7 +81,8 @@ export class FuncionarioCreateComponent {
 
   //O Html faz um bind do componente filho para este do Pai passando o ID da magem salva no BD
   capturaIdDaImgAssociada(id:number){
-    this.funcionario.imagemPerfilId=id;
     console.log(id)
+    //Ajusto o Id após a imagem ser submetida no banco de dados, senão não faço nada deixando ela padrão como 1 que é a foto default
+    this.funcionario.imagemPerfilId=id;
   }
 }
