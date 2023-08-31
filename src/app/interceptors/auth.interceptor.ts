@@ -7,9 +7,13 @@ import {
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AutenticacaoService } from '../services/autenticacao.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+
+  constructor(private authServer:AutenticacaoService){}
+
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
