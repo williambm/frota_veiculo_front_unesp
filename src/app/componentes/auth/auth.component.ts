@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Credenciais } from 'src/app/model/credenciais';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 
@@ -18,6 +19,7 @@ export class AuthComponent {
 
   constructor(
     private authService: AutenticacaoService,
+    private toast: ToastrService,
     private route:Router
     ) {}
 
@@ -35,12 +37,12 @@ export class AuthComponent {
   login() {
     //Comunicar com o serviço de login, colocar token no LocalStorage e redirecionar para home
     this.authService.autenticar(this.cred).subscribe(
-      (resposta) => {        
+      (resposta) => {
         this.authService.loginSucesso(`${resposta.body}`)
 
         this.route.navigate([''])
       },
-      error => console.log(error)
+      error => this.toast.error('Usuário ou senha incorreto','Erro de login'),
     );
   }
 }
