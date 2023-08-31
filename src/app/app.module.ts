@@ -22,7 +22,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
 import { FuncionarioListComponent } from './componentes/funcionarios/funcionario-list/funcionario-list.component';
@@ -37,7 +37,7 @@ import { VeiculoEditComponent } from './componentes/veiculos/veiculo-edit/veicul
 import { VeiculoDeleteComponent } from './componentes/veiculos/veiculo-delete/veiculo-delete.component';
 import { ViagemListComponent } from './componentes/viagens/viagem-list/viagem-list.component';
 import { ViagemCreateComponent } from './componentes/viagens/viagem-create/viagem-create.component';
-import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import localept from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
@@ -99,6 +99,12 @@ registerLocaleData(localept, 'pt');
   providers: [
     AuthInterceptorProvider,
     { provide: MAT_DATE_LOCALE, useValue: 'pt' },
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
     // { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     provideNgxMask(),
     DatePipe

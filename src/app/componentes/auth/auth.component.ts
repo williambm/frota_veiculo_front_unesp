@@ -20,8 +20,8 @@ export class AuthComponent {
   constructor(
     private authService: AutenticacaoService,
     private toast: ToastrService,
-    private route:Router
-    ) {}
+    private route: Router
+  ) {}
 
   isEmailValid = new FormControl(null, Validators.email);
   isSenhaValid = new FormControl(null, Validators.minLength(3));
@@ -38,11 +38,11 @@ export class AuthComponent {
     //Comunicar com o serviço de login, colocar token no LocalStorage e redirecionar para home
     this.authService.autenticar(this.cred).subscribe(
       (resposta) => {
-        this.authService.loginSucesso(`${resposta.body}`)
+        this.authService.loginSucesso(`${resposta.body}`);
 
-        this.route.navigate([''])
+        this.route.navigate(['']);
       },
-      error => this.toast.error('Usuário ou senha incorreto','Erro de login'),
+      (error) => this.toast.error('Usuário ou senha incorreto', 'Erro de login')
     );
   }
 }

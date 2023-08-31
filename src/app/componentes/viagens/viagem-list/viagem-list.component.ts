@@ -89,9 +89,11 @@ export class ViagemListComponent {
       .atribuirMotorista(this.motorista.viagemId, this.motorista)
       .subscribe(
         (resposta) => {
-          this.toast.info(`Viagem solicitada com sucesso`, 'SUCESSO');          
+          this.toast.info(`Viagem solicitada com sucesso`, 'SUCESSO');
+          //Chamo o Observable que carrega os eventos da tabela novamente aqui, assim a renderização do componente sera feita com sucesso.
+          this.carregarViagens();
           this.route.navigate(['/viagens']);
-          
+
         },
         (responseError) => {
           console.log(responseError);
