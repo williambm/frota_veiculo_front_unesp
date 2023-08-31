@@ -28,7 +28,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (token && !request.url.includes('/auth')) {
       //verifica se o token é valido, caso tenha expirado desloga
       if(!this.authServer.isAutenticado()){
-        this.router.navigate(['/'])
+        this.router.navigate(['/auth'])
       }
       const cloneReq = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`),

@@ -43,6 +43,7 @@ import {registerLocaleData} from '@angular/common';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ImagemComponent } from './componentes/teste/imagem/imagem.component';
 import { ImagemCreateComponent } from './componentes/imagens/imagem-create/imagem-create.component';
+import { ViagensEstatisticasComponent } from './componentes/dashboard/viagens-estatisticas/viagens-estatisticas.component';
 registerLocaleData(localept, 'pt');
 
 
@@ -65,7 +66,8 @@ registerLocaleData(localept, 'pt');
     ViagemListComponent,
     ViagemCreateComponent,
     ImagemComponent,
-    ImagemCreateComponent
+    ImagemCreateComponent,
+    ViagensEstatisticasComponent
   ],
   imports: [
     BrowserModule,

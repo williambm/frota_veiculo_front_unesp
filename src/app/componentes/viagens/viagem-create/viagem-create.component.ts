@@ -30,13 +30,13 @@ export class ViagemCreateComponent {
     campusOrigem: '',
     //veiculoModelo: '',
     dataViagem: '',
+    passageirosObservacoes: ''
   };
 
   veiculos:Veiculo={}
   //viagens: Viagem | any = {};
 
   //Usado para popular select do formulario
-  cargaDeVeiculos:Veiculo[][]=[];
   veiculosSemPaginacao:Veiculo[]=[];
   veiculosArray:Veiculo[]=[]
   veiculo$=this.veiculosService.findAllPaginadoV2$(0,50);
@@ -110,7 +110,7 @@ export class ViagemCreateComponent {
     })
   }
 
-  teste(){
+  pesquisarCEP(){
     console.log('veio da remoção de foco')
     this.viagensService.pesquisaCep$(this.viagens.cep)
     .subscribe({

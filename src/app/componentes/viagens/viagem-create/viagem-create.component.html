@@ -39,7 +39,7 @@
       <input
         [(ngModel)]="viagens.cep"
         [formControl]="cep"
-        (blur)="teste()"
+        (blur)="pesquisarCEP()"
         name="cep"
         mask="00000-000"
         required
@@ -132,6 +132,17 @@
           </mat-option>
         </div>
       </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth">
+      <mat-label>Passageiros</mat-label>
+      <textarea
+        [(ngModel)]="viagens.passageirosObservacoes"
+        name="passageiros"
+        required
+        matInput
+        placeholder="Ex.. João, Alberto, etc"
+      ></textarea>
     </mat-form-field>
 
 
