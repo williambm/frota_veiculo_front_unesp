@@ -4,6 +4,7 @@
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .estatisticas-container {
@@ -19,5 +20,14 @@
 }
 
 .card_estatistica {
-  flex: 1;
+  position: absolute;
+  height: 25rem;
+  width: 44%;
+}
+
+.chart{
+  height: 100%;
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
 }

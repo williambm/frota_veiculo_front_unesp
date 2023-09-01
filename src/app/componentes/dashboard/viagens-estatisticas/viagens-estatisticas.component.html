@@ -1,23 +1,15 @@
-<!-- <div style="display: block">
-  <canvas baseChart
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [legend]="barChartLegend"
-          [type]="'bar'"
-          >
-  </canvas>
-</div> -->
-
-
-<!-- <ngx-charts-bar-vertical
-  [view]="[700, 400]"
-  [results]="dados"
-  [xAxis]="true"
-  [yAxis]="true"
+<div  class="container" >
+  <canvas
+  baseChart
+  class="chart"
+  [data]="barChartData"
+  [type]="barChartType"
   [legend]="true"
-  [showXAxisLabel]="true"
-  [showYAxisLabel]="true"
-  xAxisLabel="Meses"
-  yAxisLabel="Quantidade de Viagens"
-></ngx-charts-bar-vertical> -->
+>
+</canvas>
+</div>
+
+<!-- [options]="barChartOptions"
+[plugins]="barChartPlugins"
+(chartHover)="chartHovered($event)"
+(chartClick)="chartClicked($event)" -->

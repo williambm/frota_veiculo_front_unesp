@@ -44,6 +44,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ImagemComponent } from './componentes/teste/imagem/imagem.component';
 import { ImagemCreateComponent } from './componentes/imagens/imagem-create/imagem-create.component';
 import { ViagensEstatisticasComponent } from './componentes/dashboard/viagens-estatisticas/viagens-estatisticas.component';
+import { NgChartsModule } from 'ng2-charts';
 registerLocaleData(localept, 'pt');
 
 
@@ -95,6 +96,7 @@ registerLocaleData(localept, 'pt');
     }),
     NgxMaskDirective,
     NgxMaskPipe,
+    NgChartsModule,
     BrowserAnimationsModule,
     AppRoutingModule
   ],

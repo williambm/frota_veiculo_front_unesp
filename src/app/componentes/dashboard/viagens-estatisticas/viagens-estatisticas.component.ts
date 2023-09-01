@@ -1,42 +1,53 @@
 import { Component } from '@angular/core';
+import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
+import { ViagensEstatistica } from 'src/app/model/viagensEstatistica';
+import { RelatoriosService } from 'src/app/services/relatorios.service';
 
 @Component({
   selector: 'app-viagens-estatisticas',
   templateUrl: './viagens-estatisticas.component.html',
-  styleUrls: ['./viagens-estatisticas.component.css']
+  styleUrls: ['./viagens-estatisticas.component.css'],
 })
 export class ViagensEstatisticasComponent {
-// Dados de exemplo
-// public barChartOptions = {
-//   scaleShowVerticalLines: false,
-//   responsive: true,
-// };
-// public barChartLabels = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'];
-// public barChartType = 'bar';
-// public barChartLegend = true;
-// public barChartData = [
-//   { data: [65, 59, 80, 81, 56, 55, 40], label: 'Série A' },
-//   { data: [28, 48, 40, 19, 86, 27, 90], label: 'Série B' },
-// ];
-colorScheme = {
-  domain: ['#5AA454', '#E44D25'],
-};
+  viagemEstatisticas:ViagensEstatistica[]=[]
+  labelChart:String[]=[]
+  dataChart:number[]=[]
 
-dados = [
-  {
-    name: 'marco',
-    series: [
-      { name: 'Viagens Solicitadas', value: 10 },
-      { name: 'Viagens Atribuídas', value: 5 },
-    ],
-  },
-  {
-    name: 'abril',
-    series: [
-      { name: 'Viagens Solicitadas', value: 15 },
-      { name: 'Viagens Atribuídas', value: 12 },
+
+  constructor(private relatorioService: RelatoriosService) {}
+
+  ngOnInit(): void {
+    this.buscarEstatisticaDoHistoricoDeViagem()
+  }
+
+  //Chamar a API de estatística
+  buscarEstatisticaDoHistoricoDeViagem() {
+    this.relatorioService.getHistoricoViagensEstatisticas$().subscribe({
+      next: (resposta) => {
+        this.viagemEstatisticas = resposta,
+        //Preenche os Labels do gráfico
+        this.labelChart = this.viagemEstatisticas.map(item => item.status),
+        this.dataChart = resposta.map(item => item.quantidade),
+
+        console.log(this.viagemEstatisticas);
+      },
+      error: (errorResposta) => console.log(errorResposta),
+    });
+  }
+
+  //define o tipo
+  public barChartType: ChartType = 'doughnut';
+
+  //alimenta o gráfico - pensar de forma dinâmica talvez em ngOnInit()
+  public barChartData: ChartData<'bar'> = {
+   // labels: ['Solicitada', 'Confirmada', 'Concluida'],
+    labels: [this.labelChart] ,
+    datasets: [
+        { data: this.dataChart, label: 'Series A' },
+       { data: [65, 59], label: 'Series A' },
+      // { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
     ],
   }
-];
+
 
 }
