@@ -24,7 +24,8 @@
 	rewrite /health /*
 
 	# serve from the set folder
-	root * {$ANGULAR_OUTPUT_PATH}/browser
+	# root * {$ANGULAR_OUTPUT_PATH}/browser -  nesse template padrão da railway ele coloca a aplicação em browser, mas a minha não tem isso
+	root * {$ANGULAR_OUTPUT_PATH} #deixei apenas como a variavel de ambiente para poder referencir o output path do dist
 
 	# enable gzipping responses
 	encode gzip
